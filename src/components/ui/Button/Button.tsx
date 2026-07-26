@@ -7,6 +7,7 @@ type BaseProps = {
   size?: 'default' | 'large';
   fullWidth?: boolean;
   loading?: boolean;
+  disabled?: boolean;
 };
 
 type ButtonAsButtonProps = BaseProps & ButtonHTMLAttributes<HTMLButtonElement> & {
