@@ -1,0 +1,201 @@
+.page {
+  padding: var(--space-2xl) var(--container-padding-desktop);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: var(--space-xl) var(--container-padding-mobile);
+  }
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.imageColumn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  order: -1;
+}
+
+.mainImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  background-color: var(--color-border-light);
+  overflow: hidden;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.thumbnails {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  padding-bottom: var(--space-sm);
+}
+
+.thumbnail {
+  position: relative;
+  width: 80px;
+  height: 100px;
+  background-color: var(--color-border-light);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.thumbnailActive {
+  border-color: var(--color-text-primary);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  order: 1;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  margin-bottom: var(--space-xs);
+}
+
+.price {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.description {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  margin-bottom: var(--space-2xl);
+  color: var(--color-text-primary);
+}
+
+.description img,
+.description iframe,
+.description video {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  height: auto;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+.optionLabel {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.optionValues {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.optionValue {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border-medium);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.optionValueActive {
+  border-color: var(--color-text-primary);
+  background: var(--color-text-primary);
+  color: var(--color-bg-card);
+}
+
+.accordion {
+  border-top: 1px solid var(--color-border-light);
+}
+
+.accordionItem {
+  border-bottom: 1px solid var(--color-border-light);
+  padding: var(--space-md) 0;
+}
+
+.accordionTitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.rating {
+  margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+}
+
+.recommended {
+  margin-top: var(--space-5xl);
+  padding-top: var(--space-3xl);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.sectionTitle {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    position: fixed;
+    bottom: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    z-index: 40;
+    background: var(--color-bg-primary);
+    padding: var(--space-md) var(--container-padding-mobile);
+    padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--color-border-light);
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+    margin: 0; /* Remove any bottom margin */
+  }
+  
+  /* Add padding bottom to page so we can scroll past the fixed button */
+  .page {
+    padding-bottom: 120px;
+  }
+}

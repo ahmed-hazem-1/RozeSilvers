@@ -1,0 +1,258 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+.overlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-bg-card);
+  z-index: 101;
+  transform: translateX(100%);
+  transition: transform var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+html[dir="rtl"] .drawer {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+html[dir="rtl"] .drawerOpen {
+  transform: translateX(0);
+}
+
+.header {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs);
+  color: var(--color-text-primary);
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+}
+
+.empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-md);
+  color: var(--color-text-secondary);
+}
+
+.footer {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--color-border-light);
+  background-color: var(--color-bg-primary);
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cartItem {
+  display: flex;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.itemImage {
+  width: 80px;
+  height: 100px;
+  background-color: var(--color-border-light);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.itemDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemTitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+.itemPrice {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: auto;
+}
+
+.itemActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--color-border-light);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.quantitySelector button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-primary);
+}
+
+.quantitySelector button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantitySelector span {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  min-width: 12px;
+  text-align: center;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.removeBtn:hover {
+  color: #e02424;
+}
+
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: var(--space-md);
+}
+
+.checkoutLink {
+  text-decoration: none;
+  display: block;
+}
+
+.promoForm {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.promoInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border-light);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+.promoInput:disabled {
+  background-color: var(--color-bg-secondary);
+  opacity: 0.7;
+}
+
+.promoBtn {
+  padding: 8px 16px;
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity var(--transition-fast);
+}
+
+.promoBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.appliedDiscount {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  margin-bottom: var(--space-sm);
+  padding: 8px;
+  background-color: var(--color-bg-secondary);
+  border-radius: 4px;
+}
+
+.discountSuccess {
+  color: #10b981;
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.discountError {
+  color: #ef4444;
+  margin-left: auto;
+  font-size: 12px;
+}

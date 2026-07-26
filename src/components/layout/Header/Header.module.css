@@ -1,0 +1,111 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: var(--transition-smooth);
+}
+
+.inner {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--space-md) var(--container-padding-desktop);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding: var(--space-md) var(--container-padding-mobile);
+  }
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.navLink {
+  font-family: var(--font-sans);
+  font-size: var(--font-nav);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-primary);
+  transition: var(--transition-fast);
+}
+
+.navLink:hover {
+  color: var(--color-text-secondary);
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  text-align: center;
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: var(--transition-fast);
+  color: var(--color-text-primary);
+  position: relative;
+}
+
+.iconButton:hover {
+  background-color: var(--color-border-light);
+}
+
+.cartCount {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-card);
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.desktopNav {
+  display: none;
+  flex: 1;
+  gap: var(--space-lg);
+}
+
+.mobileMenuBtn {
+  display: flex;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex;
+  }
+  .mobileMenuBtn {
+    display: none;
+  }
+}

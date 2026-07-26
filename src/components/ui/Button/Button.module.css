@@ -1,0 +1,66 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.primary {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-card);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: #333333;
+}
+
+.secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-card);
+}
+
+.size-default {
+  padding: 12px 32px;
+}
+
+.size-large {
+  padding: 16px 48px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  margin-right: var(--space-xs);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

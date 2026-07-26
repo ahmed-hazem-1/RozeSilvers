@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "about": "About",
+    "contact": "Contact",
+    "allProducts": "All Products",
+    "newArrivals": "New Arrivals"
+  },
+  "product": {
+    "addToCart": "ADD TO CART",
+    "adding": "ADDING...",
+    "added": "ADDED ✓",
+    "soldOut": "SOLD OUT",
+    "selectSize": "Select Size",
+    "selectColor": "Select Color",
+    "quantity": "Quantity",
+    "description": "Description",
+    "details": "Details",
+    "shipping": "Shipping & Returns",
+    "careInstructions": "Care Instructions",
+    "relatedProducts": "You May Also Like",
+    "material": "Material",
+    "weight": "Weight"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "subtotal": "Subtotal",
+    "shippingNote": "Shipping calculated at checkout",
+    "checkout": "CHECKOUT",
+    "remove": "Remove"
+  },
+  "search": {
+    "placeholder": "Search products...",
+    "noResults": "No products found for",
+    "viewAll": "View all results",
+    "resultsFor": "results for"
+  },
+  "collection": {
+    "filter": "Filter",
+    "sort": "Sort",
+    "sortFeatured": "Featured",
+    "sortPriceLow": "Price: Low to High",
+    "sortPriceHigh": "Price: High to Low",
+    "sortNewest": "Newest",
+    "sortBestSelling": "Best Selling",
+    "noProducts": "No products found",
+    "loadMore": "LOAD MORE",
+    "inStock": "In Stock",
+    "priceRange": "Price Range",
+    "applyFilters": "APPLY",
+    "clearAll": "Clear All"
+  },
+  "footer": {
+    "shop": "Shop",
+    "info": "Info",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Enter your email",
+    "subscribe": "SUBSCRIBE",
+    "subscribeSuccess": "Thank you for subscribing!",
+    "aboutUs": "About Us",
+    "shippingPolicy": "Shipping Policy",
+    "returnsPolicy": "Returns & Exchanges",
+    "privacyPolicy": "Privacy Policy",
+    "copyright": "© 2026 Roze Silvers. All rights reserved."
+  },
+  "common": {
+    "shopNow": "SHOP NOW",
+    "backToHome": "Back to Home",
+    "pageNotFound": "Page Not Found",
+    "error": "Something went wrong",
+    "tryAgain": "Try Again"
+  },
+  "about": {
+    "title": "About Roze Silvers",
+    "intro": "Founded on the principle that elegance should be accessible and timeless, Roze Silvers is a premium sterling silver jewelry brand dedicated to crafting exquisite pieces that celebrate individuality and style.",
+    "craftsmanship": "Our Craftsmanship",
+    "craftsmanshipText": "Every piece in our collection is meticulously crafted by skilled artisans using high-quality 925 sterling silver. We believe in the beauty of details, ensuring that each ring, necklace, and bracelet meets our rigorous standards of quality.",
+    "mission": "Our Mission",
+    "missionText": "Our mission is to provide you with jewelry that not only enhances your everyday look but also becomes a cherished part of your personal story. We are committed to sustainable practices and ethical sourcing in all our creations."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question or need assistance? We're here to help. Fill out the form below and our team will get back to you within 24 hours.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send Message"
+  },
+  "shipping": {
+    "title": "Shipping Policy",
+    "processing": "Processing Time",
+    "processingText": "All orders are processed within 1-2 business days. Orders are not shipped or delivered on weekends or holidays. If we are experiencing a high volume of orders, shipments may be delayed by a few days.",
+    "rates": "Shipping Rates & Delivery Estimates",
+    "ratesText": "Shipping charges for your order will be calculated and displayed at checkout.",
+    "standard": "Standard Shipping:",
+    "standardTime": "3-5 business days",
+    "express": "Express Shipping:",
+    "expressTime": "1-2 business days",
+    "international": "International Shipping",
+    "internationalText": "We currently offer international shipping to select countries. Please note that customs duties and taxes may apply and are the responsibility of the customer."
+  },
+  "returns": {
+    "title": "Returns & Exchanges",
+    "policy": "Our Return Policy",
+    "policyText": "We want you to be completely satisfied with your purchase. If for any reason you are not happy with your order, we accept returns within 30 days of delivery for a full refund or exchange.",
+    "conditions": "Conditions for Return",
+    "cond1": "Items must be unworn, unused, and in their original packaging.",
+    "cond2": "Custom or engraved pieces are final sale and cannot be returned.",
+    "cond3": "Original shipping charges are non-refundable.",
+    "how": "How to Start a Return",
+    "howText": "To initiate a return, please visit our Contact page and provide your order number. We will provide you with a prepaid return shipping label and instructions."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: July 2026",
+    "info": "Information We Collect",
+    "infoText": "We collect information that you provide directly to us when you create an account, make a purchase, sign up for our newsletter, or communicate with us. This may include your name, email address, shipping address, and payment information.",
+    "use": "How We Use Your Information",
+    "useText": "We use the information we collect to process your orders, communicate with you about your purchases, and send you promotional materials if you have opted in to receive them.",
+    "security": "Data Security",
+    "securityText": "We implement industry-standard security measures to protect your personal information. Your payment details are processed securely through Shopify and are never stored on our servers."
+  }
+}
