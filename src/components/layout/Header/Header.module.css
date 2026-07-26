@@ -96,16 +96,51 @@
   gap: var(--space-lg);
 }
 
-.mobileMenuBtn {
+.leftSection {
   display: flex;
   flex: 1;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.mobileOnly {
+  display: flex;
+}
+
+.desktopOnly {
+  display: none;
 }
 
 @media (min-width: 768px) {
   .desktopNav {
     display: flex;
   }
-  .mobileMenuBtn {
-    display: none;
+  .mobileOnly {
+    display: none !important;
+  }
+  .desktopOnly {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 16px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .actions, .leftSection {
+    gap: 4px;
+  }
+
+  .iconButton {
+    width: 34px;
+    height: 34px;
+  }
+
+  .iconButton svg {
+    width: 18px !important;
+    height: 18px !important;
   }
 }

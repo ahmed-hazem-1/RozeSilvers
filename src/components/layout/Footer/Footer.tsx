@@ -23,15 +23,15 @@ export function Footer() {
         <div className={styles.column}>
           <h3 className={styles.title}>Roze Silvers</h3>
           <p className={styles.link} style={{ lineHeight: 1.6 }}>
-            Premium sterling silver jewelry crafted with precision and passion.
+            {t('brandDescription')}
           </p>
         </div>
 
         <div className={styles.column}>
           <h3 className={styles.title}>{t('shop')}</h3>
-          <Link href="/collections/all" className={styles.link}>All Products</Link>
-          <Link href="/collections/new" className={styles.link}>New Arrivals</Link>
-          <Link href="/collections/rings" className={styles.link}>Rings</Link>
+          <Link href="/collections/all" className={styles.link}>{t('allProducts')}</Link>
+          <Link href="/collections/new" className={styles.link}>{t('newArrivals')}</Link>
+          <Link href="/collections/rings" className={styles.link}>{t('rings')}</Link>
         </div>
 
         <div className={styles.column}>

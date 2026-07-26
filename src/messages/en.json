@@ -64,14 +64,20 @@
     "shippingPolicy": "Shipping Policy",
     "returnsPolicy": "Returns & Exchanges",
     "privacyPolicy": "Privacy Policy",
-    "copyright": "© 2026 Roze Silvers. All rights reserved."
+    "copyright": "© 2026 Roze Silvers. All rights reserved.",
+    "brandDescription": "Premium sterling silver jewelry crafted with precision and passion.",
+    "allProducts": "All Products",
+    "newArrivals": "New Arrivals",
+    "rings": "Rings"
   },
   "common": {
     "shopNow": "SHOP NOW",
     "backToHome": "Back to Home",
     "pageNotFound": "Page Not Found",
     "error": "Something went wrong",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "heroTitle": "Elegance in Every Detail",
+    "heroSubtitle": "Discover our new collection of premium sterling silver jewelry."
   },
   "about": {
     "title": "About Roze Silvers",
