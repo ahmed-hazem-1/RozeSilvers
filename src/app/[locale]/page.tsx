@@ -24,11 +24,11 @@ export default async function HomePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Roze Silvers',
-    url: 'https://rozesilvers.com',
+    name: 'Rose Silvers',
+    url: 'https://rosesilvers.com',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://rozesilvers.com/en/search?q={search_term_string}',
+      target: 'https://rosesilvers.com/en/search?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };

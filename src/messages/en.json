@@ -10,7 +10,7 @@
   "product": {
     "addToCart": "ADD TO CART",
     "adding": "ADDING...",
-    "added": "ADDED ✓",
+    "added": "ADDED âœ“",
     "soldOut": "SOLD OUT",
     "selectSize": "Select Size",
     "selectColor": "Select Color",
@@ -64,7 +64,7 @@
     "shippingPolicy": "Shipping Policy",
     "returnsPolicy": "Returns & Exchanges",
     "privacyPolicy": "Privacy Policy",
-    "copyright": "© 2026 Roze Silvers. All rights reserved.",
+    "copyright": "Â© 2026 Rose Silvers. All rights reserved.",
     "brandDescription": "Premium sterling silver jewelry crafted with precision and passion.",
     "allProducts": "All Products",
     "newArrivals": "New Arrivals",
@@ -80,8 +80,8 @@
     "heroSubtitle": "Discover our new collection of premium sterling silver jewelry."
   },
   "about": {
-    "title": "About Roze Silvers",
-    "intro": "Founded on the principle that elegance should be accessible and timeless, Roze Silvers is a premium sterling silver jewelry brand dedicated to crafting exquisite pieces that celebrate individuality and style.",
+    "title": "About Rose Silvers",
+    "intro": "Founded on the principle that elegance should be accessible and timeless, Rose Silvers is a premium sterling silver jewelry brand dedicated to crafting exquisite pieces that celebrate individuality and style.",
     "craftsmanship": "Our Craftsmanship",
     "craftsmanshipText": "Every piece in our collection is meticulously crafted by skilled artisans using high-quality 925 sterling silver. We believe in the beauty of details, ensuring that each ring, necklace, and bracelet meets our rigorous standards of quality.",
     "mission": "Our Mission",

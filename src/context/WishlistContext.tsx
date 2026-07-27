@@ -19,7 +19,7 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem('roze_wishlist');
+    const stored = localStorage.getItem('rose_wishlist');
     if (stored) {
       try {
         setWishlist(JSON.parse(stored));
@@ -32,7 +32,7 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (isLoaded) {
-      localStorage.setItem('roze_wishlist', JSON.stringify(wishlist));
+      localStorage.setItem('rose_wishlist', JSON.stringify(wishlist));
     }
   }, [wishlist, isLoaded]);
 

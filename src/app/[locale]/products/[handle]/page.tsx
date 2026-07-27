@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!product) return {};
 
   return {
-    title: `${product.title} — Roze Silvers`,
+    title: `${product.title} — Rose Silvers`,
     description: product.description?.slice(0, 155),
   };
 }
@@ -75,13 +75,13 @@ export default async function ProductPage({
     name: product.title,
     image: product.images?.edges.map((e: any) => e.node.url) || [],
     description: product.description,
-    brand: { '@type': 'Brand', name: 'Roze Silvers' },
+    brand: { '@type': 'Brand', name: 'Rose Silvers' },
     offers: {
       '@type': 'Offer',
       priceCurrency: price?.currencyCode || 'EGP',
       price: price?.amount || '0',
       availability: 'https://schema.org/InStock',
-      url: `https://rozesilvers.com/${(await params).locale}/products/${handle}`
+      url: `https://rosesilvers.com/${(await params).locale}/products/${handle}`
     }
   } : null;
 

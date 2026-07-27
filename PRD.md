@@ -1,4 +1,4 @@
-# PRD — Roze Silvers: Premium Silver Jewelry Shopify Storefront
+# PRD â€” Rose Silvers: Premium Silver Jewelry Shopify Storefront
 
 > **Document Purpose:** This PRD provides every detail an AI agent needs to build the complete storefront. No assumptions should be made beyond what is written here and in the referenced `design.md`.
 
@@ -8,7 +8,7 @@
 1. [Project Overview](#1-project-overview)
 2. [Tech Stack](#2-tech-stack)
 3. [Shopify Integration](#3-shopify-integration)
-4. [Site Architecture — Pages & Routes](#4-site-architecture--pages--routes)
+4. [Site Architecture â€” Pages & Routes](#4-site-architecture--pages--routes)
 5. [Component Architecture](#5-component-architecture)
 6. [Features Specification](#6-features-specification)
 7. [Data & Content Structure](#7-data--content-structure)
@@ -17,25 +17,25 @@
 10. [Bilingual Support (EN / AR)](#10-bilingual-support-en--ar)
 11. [Accessibility](#11-accessibility)
 12. [Deployment & Environment](#12-deployment--environment)
-13. [Constraints — What NOT To Do](#13-constraints--what-not-to-do)
+13. [Constraints â€” What NOT To Do](#13-constraints--what-not-to-do)
 
 ---
 
 ## 1. Project Overview
 
 ### 1.1 What is this?
-A **headless Shopify storefront** for **Roze Silvers** — a premium silver jewelry brand. The frontend is a custom-built web application that connects to Shopify's backend via the **Storefront API**. All product data, collections, cart, checkout, and customer accounts are managed through Shopify. The frontend is responsible **only** for presentation and user interaction.
+A **headless Shopify storefront** for **Rose Silvers** â€” a premium silver jewelry brand. The frontend is a custom-built web application that connects to Shopify's backend via the **Storefront API**. All product data, collections, cart, checkout, and customer accounts are managed through Shopify. The frontend is responsible **only** for presentation and user interaction.
 
 ### 1.2 Brand Identity
-* **Brand Name:** Roze Silvers
+* **Brand Name:** Rose Silvers
 * **Industry:** Premium silver jewelry (rings, necklaces, bracelets, earrings, anklets)
 * **Tone:** Elegant, minimal, high-end, quiet luxury
-* **Target Audience:** Women aged 20–40 who value understated, premium silver accessories
+* **Target Audience:** Women aged 20â€“40 who value understated, premium silver accessories
 * **Languages:** English (primary), Arabic (secondary)
-* **Currency:** EGP (Egyptian Pound) — managed through Shopify settings
+* **Currency:** EGP (Egyptian Pound) â€” managed through Shopify settings
 
 ### 1.3 Core Principle
-> The website must feel like walking into a high-end jewelry boutique — clean, spacious, quiet, and focused entirely on the product. Every pixel serves a purpose.
+> The website must feel like walking into a high-end jewelry boutique â€” clean, spacious, quiet, and focused entirely on the product. Every pixel serves a purpose.
 
 ### 1.4 Design Reference
 All visual specifications (colors, typography, spacing, hover effects, mobile behavior, constraints) are documented in **`design.md`** in the project root. The AI agent **MUST** read and follow `design.md` for every visual decision. If a visual detail is not covered in this PRD, defer to `design.md`. If neither document covers it, follow the brand tone: minimal, premium, sharp edges, muted colors, generous whitespace.
@@ -49,7 +49,7 @@ All visual specifications (colors, typography, spacing, hover effects, mobile be
 |-------|-----------|---------|-----|
 | Framework | **Next.js** (App Router) | Latest stable (15.x) | SSR/SSG for SEO, file-based routing, React Server Components |
 | Language | **TypeScript** | Latest stable | Type safety, fewer runtime errors |
-| Styling | **Vanilla CSS** (CSS Modules) | — | Full control, no utility class bloat, matches premium aesthetic |
+| Styling | **Vanilla CSS** (CSS Modules) | â€” | Full control, no utility class bloat, matches premium aesthetic |
 | Package Manager | **npm** | Latest | Standard |
 
 ### 2.2 Shopify Connection
@@ -59,7 +59,7 @@ All visual specifications (colors, typography, spacing, hover effects, mobile be
 | SDK | **@shopify/hydrogen-react** | Pre-built hooks & utilities for Storefront API |
 | Cart | **Storefront API Cart** | Server-managed cart via `cartCreate`, `cartLinesAdd`, etc. |
 | Checkout | **Shopify-hosted Checkout** | Redirect to Shopify's checkout page (not custom checkout) |
-| Customer Accounts | **Shopify Customer Account API** | Login, register, order history — via Shopify's hosted login or API |
+| Customer Accounts | **Shopify Customer Account API** | Login, register, order history â€” via Shopify's hosted login or API |
 
 ### 2.3 Additional Libraries (Allowed)
 | Library | Purpose |
@@ -67,13 +67,13 @@ All visual specifications (colors, typography, spacing, hover effects, mobile be
 | `graphql-request` or native `fetch` | For Storefront API GraphQL calls |
 | `next-intl` or `next-i18next` | Bilingual EN/AR support |
 | `swiper` or `embla-carousel` | Product image carousels (mobile swipe) |
-| `framer-motion` (OPTIONAL) | Only for page transitions & menu animations — NOT for decorative effects |
+| `framer-motion` (OPTIONAL) | Only for page transitions & menu animations â€” NOT for decorative effects |
 | `react-icons` (lucide subset) | Thin-line icons only (matching design system) |
 
 ### 2.4 Libraries NOT Allowed
 | Library | Reason |
 |---------|--------|
-| TailwindCSS | Conflicts with design system philosophy — use CSS Modules |
+| TailwindCSS | Conflicts with design system philosophy â€” use CSS Modules |
 | Bootstrap / Material UI / Chakra | Pre-styled components break the premium aesthetic |
 | jQuery | Not needed in React |
 | Animate.css | Bouncy/fast animations violate design constraints |
@@ -87,14 +87,14 @@ All visual specifications (colors, typography, spacing, hover effects, mobile be
 The following environment variables must be configured in `.env.local`:
 
 ```env
-NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=rozesilvers.myshopify.com
+NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=rosesilvers.myshopify.com
 NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxx
 SHOPIFY_ADMIN_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxx  # Only if needed for server-side admin tasks
 ```
 
 > **IMPORTANT:** The Storefront Access Token is a **public** token (safe for client-side). The Admin token is **private** (server-side only, never exposed to the browser).
 
-### 3.2 Storefront API — Key Operations
+### 3.2 Storefront API â€” Key Operations
 
 #### Products
 ```graphql
@@ -238,70 +238,70 @@ query Search($query: String!, $first: Int!) {
 ### 3.5 Customer Accounts
 * Use **Shopify's hosted customer account pages** (login, register, order history, addresses).
 * Link to them from the header account icon.
-* Alternatively, if deeper integration is needed later, use the **Customer Account API** — but for MVP, hosted pages are sufficient.
+* Alternatively, if deeper integration is needed later, use the **Customer Account API** â€” but for MVP, hosted pages are sufficient.
 
 ---
 
-## 4. Site Architecture — Pages & Routes
+## 4. Site Architecture â€” Pages & Routes
 
 ### 4.1 Folder Structure (Next.js App Router)
 
 ```
 src/
-├── app/
-│   ├── [locale]/                    # Locale wrapper (en / ar)
-│   │   ├── layout.tsx               # Root layout (Header + Footer + locale provider)
-│   │   ├── page.tsx                 # Homepage
-│   │   ├── collections/
-│   │   │   ├── page.tsx             # All Collections listing page
-│   │   │   └── [handle]/
-│   │   │       └── page.tsx         # Single Collection page (product grid + filters)
-│   │   ├── products/
-│   │   │   └── [handle]/
-│   │   │       └── page.tsx         # Product Detail Page (PDP)
-│   │   ├── search/
-│   │   │   └── page.tsx             # Search results page
-│   │   ├── cart/
-│   │   │   └── page.tsx             # Full cart page
-│   │   ├── about/
-│   │   │   └── page.tsx             # About Us page
-│   │   ├── contact/
-│   │   │   └── page.tsx             # Contact page
-│   │   ├── policies/
-│   │   │   ├── shipping/page.tsx    # Shipping policy
-│   │   │   ├── returns/page.tsx     # Returns & exchange policy
-│   │   │   └── privacy/page.tsx     # Privacy policy
-│   │   └── not-found.tsx            # Custom 404 page
-│   ├── layout.tsx                   # Root HTML layout (fonts, metadata)
-│   └── globals.css                  # Design system CSS custom properties
-├── components/                      # Reusable UI components
-├── lib/
-│   ├── shopify/
-│   │   ├── client.ts                # Storefront API client (fetch wrapper)
-│   │   ├── queries.ts               # All GraphQL queries
-│   │   ├── mutations.ts             # All GraphQL mutations
-│   │   └── types.ts                 # TypeScript types for Shopify data
-│   ├── utils.ts                     # Helpers (format price, etc.)
-│   └── constants.ts                 # Site-wide constants
-├── hooks/                           # Custom React hooks
-│   ├── useCart.ts
-│   ├── useSearch.ts
-│   └── useLocale.ts
-├── context/
-│   ├── CartContext.tsx               # Cart state provider
-│   └── LocaleContext.tsx             # Language state provider
-├── messages/
-│   ├── en.json                      # English translations
-│   └── ar.json                      # Arabic translations
-└── public/
-    ├── fonts/                       # Self-hosted fonts (Playfair Display, Inter, Amiri, Tajawal)
-    ├── icons/                       # SVG icons (thin-line)
-    └── images/                      # Static images (logo, hero, etc.)
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ [locale]/                    # Locale wrapper (en / ar)
+â”‚   â”‚   â”œâ”€â”€ layout.tsx               # Root layout (Header + Footer + locale provider)
+â”‚   â”‚   â”œâ”€â”€ page.tsx                 # Homepage
+â”‚   â”‚   â”œâ”€â”€ collections/
+â”‚   â”‚   â”‚   â”œâ”€â”€ page.tsx             # All Collections listing page
+â”‚   â”‚   â”‚   â””â”€â”€ [handle]/
+â”‚   â”‚   â”‚       â””â”€â”€ page.tsx         # Single Collection page (product grid + filters)
+â”‚   â”‚   â”œâ”€â”€ products/
+â”‚   â”‚   â”‚   â””â”€â”€ [handle]/
+â”‚   â”‚   â”‚       â””â”€â”€ page.tsx         # Product Detail Page (PDP)
+â”‚   â”‚   â”œâ”€â”€ search/
+â”‚   â”‚   â”‚   â””â”€â”€ page.tsx             # Search results page
+â”‚   â”‚   â”œâ”€â”€ cart/
+â”‚   â”‚   â”‚   â””â”€â”€ page.tsx             # Full cart page
+â”‚   â”‚   â”œâ”€â”€ about/
+â”‚   â”‚   â”‚   â””â”€â”€ page.tsx             # About Us page
+â”‚   â”‚   â”œâ”€â”€ contact/
+â”‚   â”‚   â”‚   â””â”€â”€ page.tsx             # Contact page
+â”‚   â”‚   â”œâ”€â”€ policies/
+â”‚   â”‚   â”‚   â”œâ”€â”€ shipping/page.tsx    # Shipping policy
+â”‚   â”‚   â”‚   â”œâ”€â”€ returns/page.tsx     # Returns & exchange policy
+â”‚   â”‚   â”‚   â””â”€â”€ privacy/page.tsx     # Privacy policy
+â”‚   â”‚   â””â”€â”€ not-found.tsx            # Custom 404 page
+â”‚   â”œâ”€â”€ layout.tsx                   # Root HTML layout (fonts, metadata)
+â”‚   â””â”€â”€ globals.css                  # Design system CSS custom properties
+â”œâ”€â”€ components/                      # Reusable UI components
+â”œâ”€â”€ lib/
+â”‚   â”œâ”€â”€ shopify/
+â”‚   â”‚   â”œâ”€â”€ client.ts                # Storefront API client (fetch wrapper)
+â”‚   â”‚   â”œâ”€â”€ queries.ts               # All GraphQL queries
+â”‚   â”‚   â”œâ”€â”€ mutations.ts             # All GraphQL mutations
+â”‚   â”‚   â””â”€â”€ types.ts                 # TypeScript types for Shopify data
+â”‚   â”œâ”€â”€ utils.ts                     # Helpers (format price, etc.)
+â”‚   â””â”€â”€ constants.ts                 # Site-wide constants
+â”œâ”€â”€ hooks/                           # Custom React hooks
+â”‚   â”œâ”€â”€ useCart.ts
+â”‚   â”œâ”€â”€ useSearch.ts
+â”‚   â””â”€â”€ useLocale.ts
+â”œâ”€â”€ context/
+â”‚   â”œâ”€â”€ CartContext.tsx               # Cart state provider
+â”‚   â””â”€â”€ LocaleContext.tsx             # Language state provider
+â”œâ”€â”€ messages/
+â”‚   â”œâ”€â”€ en.json                      # English translations
+â”‚   â””â”€â”€ ar.json                      # Arabic translations
+â””â”€â”€ public/
+    â”œâ”€â”€ fonts/                       # Self-hosted fonts (Playfair Display, Inter, Amiri, Tajawal)
+    â”œâ”€â”€ icons/                       # SVG icons (thin-line)
+    â””â”€â”€ images/                      # Static images (logo, hero, etc.)
 ```
 
 ### 4.2 Page Definitions
 
-#### **Homepage** — `/[locale]`
+#### **Homepage** â€” `/[locale]`
 | Section | Content | Data Source |
 |---------|---------|-------------|
 | Hero | Full-width asymmetric layout with headline, subtitle, CTA button, and 1-2 hero images | Static content (hardcoded or from Shopify metaobjects) |
@@ -312,7 +312,7 @@ src/
 | Brand Story Strip | A minimal text section with 1 line of brand philosophy | Static content |
 | Newsletter | Email input + subscribe button | Shopify Customer API or third-party (Mailchimp) |
 
-#### **Collection Page** — `/[locale]/collections/[handle]`
+#### **Collection Page** â€” `/[locale]/collections/[handle]`
 | Element | Behavior |
 |---------|----------|
 | Collection Title | Displayed at top, `32px` desktop / `24px` mobile |
@@ -324,30 +324,30 @@ src/
 | Pagination | "Load More" button (NOT infinite scroll, NOT numbered pages) |
 | Empty State | "No products found" message with link back to all collections |
 
-#### **Product Detail Page (PDP)** — `/[locale]/products/[handle]`
+#### **Product Detail Page (PDP)** â€” `/[locale]/products/[handle]`
 | Element | Behavior |
 |---------|----------|
 | Image Gallery | Desktop: main image + vertical thumbnails on the left. Mobile: full-width swipeable carousel with dots |
 | Product Title | Serif font (Playfair Display), `24px` desktop / `20px` mobile |
 | Price | Below title, `16px` weight `600`. If compareAtPrice exists, show original crossed out |
-| Variant Selector | Size chips / color swatches (depending on variant options). See `design.md` section 13.ن |
-| Quantity Selector | `−` [number] `+` inline |
-| Add to Cart Button | Full-width on mobile (fixed bottom bar). Inline on desktop. Changes to "Adding..." then "Added ✓" briefly |
+| Variant Selector | Size chips / color swatches (depending on variant options). See `design.md` section 13.Ù† |
+| Quantity Selector | `âˆ’` [number] `+` inline |
+| Add to Cart Button | Full-width on mobile (fixed bottom bar). Inline on desktop. Changes to "Adding..." then "Added âœ“" briefly |
 | Product Description | HTML rendered from `descriptionHtml`. Accordion sections for Details, Shipping, Care |
-| Metafields | Material, Weight, Care Instructions — displayed in the accordion |
+| Metafields | Material, Weight, Care Instructions â€” displayed in the accordion |
 | Related Products | Horizontal scrollable row of 4-6 products from same collection. `scroll-snap` on mobile |
-| Recently Viewed | (Optional — Phase 2) Stored in localStorage |
+| Recently Viewed | (Optional â€” Phase 2) Stored in localStorage |
 
-#### **Cart Page** — `/[locale]/cart`
+#### **Cart Page** â€” `/[locale]/cart`
 | Element | Behavior |
 |---------|----------|
-| Cart Items | List of items with: thumbnail (80×80), title, variant, quantity selector, line price, remove button |
+| Cart Items | List of items with: thumbnail (80Ã—80), title, variant, quantity selector, line price, remove button |
 | Cart Summary | Subtotal, estimated shipping note ("Calculated at checkout"), total |
 | Checkout Button | Redirects to Shopify checkout (`checkoutUrl`). Full-width, primary style |
 | Continue Shopping | Link back to collections |
 | Empty Cart | Message + CTA to browse collections |
 
-#### **Search Results** — `/[locale]/search?q=...`
+#### **Search Results** â€” `/[locale]/search?q=...`
 | Element | Behavior |
 |---------|----------|
 | Search Input | Pre-filled with query, auto-focused |
@@ -355,17 +355,17 @@ src/
 | No Results | "No products found for [query]" + suggested collections |
 | Result Count | "X results for [query]" |
 
-#### **About Page** — `/[locale]/about`
+#### **About Page** â€” `/[locale]/about`
 * Brand story, mission, craftsmanship details
 * Full-width image sections
 * All static content (hardcoded)
 
-#### **Contact Page** — `/[locale]/contact`
-* Contact form (name, email, subject, message) — submits via Shopify or email API
+#### **Contact Page** â€” `/[locale]/contact`
+* Contact form (name, email, subject, message) â€” submits via Shopify or email API
 * Store info (email, phone, social links)
 * Optional: embedded map
 
-#### **Policy Pages** — `/[locale]/policies/[type]`
+#### **Policy Pages** â€” `/[locale]/policies/[type]`
 * Static text content from Shopify's built-in policy fields (fetched via Storefront API `shop` query)
 
 #### **404 Page**
@@ -380,119 +380,119 @@ src/
 
 ```
 src/components/
-├── layout/
-│   ├── Header/
-│   │   ├── Header.tsx
-│   │   ├── Header.module.css
-│   │   ├── DesktopNav.tsx
-│   │   ├── MobileMenu.tsx
-│   │   ├── MobileMenu.module.css
-│   │   ├── HeaderIcons.tsx
-│   │   └── AnnouncementBar.tsx         # Optional top bar ("Free shipping over X")
-│   ├── Footer/
-│   │   ├── Footer.tsx
-│   │   ├── Footer.module.css
-│   │   ├── FooterColumn.tsx
-│   │   ├── FooterAccordion.tsx         # Mobile: collapsible footer sections
-│   │   └── NewsletterForm.tsx
-│   └── Container.tsx                    # Max-width wrapper with responsive padding
-├── product/
-│   ├── ProductCard/
-│   │   ├── ProductCard.tsx
-│   │   ├── ProductCard.module.css
-│   │   └── WishlistButton.tsx
-│   ├── ProductGrid/
-│   │   ├── ProductGrid.tsx
-│   │   └── ProductGrid.module.css
-│   ├── ProductGallery/
-│   │   ├── ProductGallery.tsx           # Desktop: main + thumbnails
-│   │   ├── ProductGallery.module.css
-│   │   └── MobileGallery.tsx            # Mobile: swipeable carousel
-│   ├── VariantSelector/
-│   │   ├── VariantSelector.tsx
-│   │   └── VariantSelector.module.css
-│   ├── QuantitySelector/
-│   │   ├── QuantitySelector.tsx
-│   │   └── QuantitySelector.module.css
-│   ├── ProductAccordion/
-│   │   ├── ProductAccordion.tsx
-│   │   └── ProductAccordion.module.css
-│   └── RelatedProducts/
-│       ├── RelatedProducts.tsx
-│       └── RelatedProducts.module.css
-├── cart/
-│   ├── CartDrawer/
-│   │   ├── CartDrawer.tsx               # Slide-in cart drawer
-│   │   └── CartDrawer.module.css
-│   ├── CartItem/
-│   │   ├── CartItem.tsx
-│   │   └── CartItem.module.css
-│   └── CartSummary/
-│       ├── CartSummary.tsx
-│       └── CartSummary.module.css
-├── collection/
-│   ├── CollectionHeader/
-│   │   ├── CollectionHeader.tsx
-│   │   └── CollectionHeader.module.css
-│   ├── FilterSidebar/
-│   │   ├── FilterSidebar.tsx            # Desktop: sidebar
-│   │   ├── FilterSidebar.module.css
-│   │   └── FilterModal.tsx              # Mobile: full-screen modal
-│   └── SortDropdown/
-│       ├── SortDropdown.tsx
-│       └── SortDropdown.module.css
-├── search/
-│   ├── SearchOverlay/
-│   │   ├── SearchOverlay.tsx            # Full-screen search (see design.md section 11.ب)
-│   │   └── SearchOverlay.module.css
-│   └── SearchResults.tsx
-├── home/
-│   ├── HeroSection/
-│   │   ├── HeroSection.tsx
-│   │   └── HeroSection.module.css
-│   ├── CategoryHighlights/
-│   │   ├── CategoryHighlights.tsx
-│   │   └── CategoryHighlights.module.css
-│   ├── BrandStoryStrip/
-│   │   ├── BrandStoryStrip.tsx
-│   │   └── BrandStoryStrip.module.css
-│   └── NewsletterSection/
-│       ├── NewsletterSection.tsx
-│       └── NewsletterSection.module.css
-├── ui/
-│   ├── Button/
-│   │   ├── Button.tsx
-│   │   └── Button.module.css
-│   ├── Input/
-│   │   ├── Input.tsx
-│   │   └── Input.module.css
-│   ├── Select/
-│   │   ├── Select.tsx
-│   │   └── Select.module.css
-│   ├── Accordion/
-│   │   ├── Accordion.tsx
-│   │   └── Accordion.module.css
-│   ├── Modal/
-│   │   ├── Modal.tsx
-│   │   └── Modal.module.css
-│   ├── Breadcrumb/
-│   │   ├── Breadcrumb.tsx
-│   │   └── Breadcrumb.module.css
-│   ├── LoadMoreButton/
-│   │   ├── LoadMoreButton.tsx
-│   │   └── LoadMoreButton.module.css
-│   ├── SkeletonLoader/
-│   │   ├── SkeletonLoader.tsx
-│   │   └── SkeletonLoader.module.css
-│   ├── Badge/
-│   │   └── Badge.tsx                    # "Sale", "New", "Sold Out" badges
-│   ├── Divider/
-│   │   └── Divider.tsx
-│   └── BackToTop/
-│       ├── BackToTop.tsx
-│       └── BackToTop.module.css
-└── icons/
-    └── index.tsx                        # All SVG icons exported as React components
+â”œâ”€â”€ layout/
+â”‚   â”œâ”€â”€ Header/
+â”‚   â”‚   â”œâ”€â”€ Header.tsx
+â”‚   â”‚   â”œâ”€â”€ Header.module.css
+â”‚   â”‚   â”œâ”€â”€ DesktopNav.tsx
+â”‚   â”‚   â”œâ”€â”€ MobileMenu.tsx
+â”‚   â”‚   â”œâ”€â”€ MobileMenu.module.css
+â”‚   â”‚   â”œâ”€â”€ HeaderIcons.tsx
+â”‚   â”‚   â””â”€â”€ AnnouncementBar.tsx         # Optional top bar ("Free shipping over X")
+â”‚   â”œâ”€â”€ Footer/
+â”‚   â”‚   â”œâ”€â”€ Footer.tsx
+â”‚   â”‚   â”œâ”€â”€ Footer.module.css
+â”‚   â”‚   â”œâ”€â”€ FooterColumn.tsx
+â”‚   â”‚   â”œâ”€â”€ FooterAccordion.tsx         # Mobile: collapsible footer sections
+â”‚   â”‚   â””â”€â”€ NewsletterForm.tsx
+â”‚   â””â”€â”€ Container.tsx                    # Max-width wrapper with responsive padding
+â”œâ”€â”€ product/
+â”‚   â”œâ”€â”€ ProductCard/
+â”‚   â”‚   â”œâ”€â”€ ProductCard.tsx
+â”‚   â”‚   â”œâ”€â”€ ProductCard.module.css
+â”‚   â”‚   â””â”€â”€ WishlistButton.tsx
+â”‚   â”œâ”€â”€ ProductGrid/
+â”‚   â”‚   â”œâ”€â”€ ProductGrid.tsx
+â”‚   â”‚   â””â”€â”€ ProductGrid.module.css
+â”‚   â”œâ”€â”€ ProductGallery/
+â”‚   â”‚   â”œâ”€â”€ ProductGallery.tsx           # Desktop: main + thumbnails
+â”‚   â”‚   â”œâ”€â”€ ProductGallery.module.css
+â”‚   â”‚   â””â”€â”€ MobileGallery.tsx            # Mobile: swipeable carousel
+â”‚   â”œâ”€â”€ VariantSelector/
+â”‚   â”‚   â”œâ”€â”€ VariantSelector.tsx
+â”‚   â”‚   â””â”€â”€ VariantSelector.module.css
+â”‚   â”œâ”€â”€ QuantitySelector/
+â”‚   â”‚   â”œâ”€â”€ QuantitySelector.tsx
+â”‚   â”‚   â””â”€â”€ QuantitySelector.module.css
+â”‚   â”œâ”€â”€ ProductAccordion/
+â”‚   â”‚   â”œâ”€â”€ ProductAccordion.tsx
+â”‚   â”‚   â””â”€â”€ ProductAccordion.module.css
+â”‚   â””â”€â”€ RelatedProducts/
+â”‚       â”œâ”€â”€ RelatedProducts.tsx
+â”‚       â””â”€â”€ RelatedProducts.module.css
+â”œâ”€â”€ cart/
+â”‚   â”œâ”€â”€ CartDrawer/
+â”‚   â”‚   â”œâ”€â”€ CartDrawer.tsx               # Slide-in cart drawer
+â”‚   â”‚   â””â”€â”€ CartDrawer.module.css
+â”‚   â”œâ”€â”€ CartItem/
+â”‚   â”‚   â”œâ”€â”€ CartItem.tsx
+â”‚   â”‚   â””â”€â”€ CartItem.module.css
+â”‚   â””â”€â”€ CartSummary/
+â”‚       â”œâ”€â”€ CartSummary.tsx
+â”‚       â””â”€â”€ CartSummary.module.css
+â”œâ”€â”€ collection/
+â”‚   â”œâ”€â”€ CollectionHeader/
+â”‚   â”‚   â”œâ”€â”€ CollectionHeader.tsx
+â”‚   â”‚   â””â”€â”€ CollectionHeader.module.css
+â”‚   â”œâ”€â”€ FilterSidebar/
+â”‚   â”‚   â”œâ”€â”€ FilterSidebar.tsx            # Desktop: sidebar
+â”‚   â”‚   â”œâ”€â”€ FilterSidebar.module.css
+â”‚   â”‚   â””â”€â”€ FilterModal.tsx              # Mobile: full-screen modal
+â”‚   â””â”€â”€ SortDropdown/
+â”‚       â”œâ”€â”€ SortDropdown.tsx
+â”‚       â””â”€â”€ SortDropdown.module.css
+â”œâ”€â”€ search/
+â”‚   â”œâ”€â”€ SearchOverlay/
+â”‚   â”‚   â”œâ”€â”€ SearchOverlay.tsx            # Full-screen search (see design.md section 11.Ø¨)
+â”‚   â”‚   â””â”€â”€ SearchOverlay.module.css
+â”‚   â””â”€â”€ SearchResults.tsx
+â”œâ”€â”€ home/
+â”‚   â”œâ”€â”€ HeroSection/
+â”‚   â”‚   â”œâ”€â”€ HeroSection.tsx
+â”‚   â”‚   â””â”€â”€ HeroSection.module.css
+â”‚   â”œâ”€â”€ CategoryHighlights/
+â”‚   â”‚   â”œâ”€â”€ CategoryHighlights.tsx
+â”‚   â”‚   â””â”€â”€ CategoryHighlights.module.css
+â”‚   â”œâ”€â”€ BrandStoryStrip/
+â”‚   â”‚   â”œâ”€â”€ BrandStoryStrip.tsx
+â”‚   â”‚   â””â”€â”€ BrandStoryStrip.module.css
+â”‚   â””â”€â”€ NewsletterSection/
+â”‚       â”œâ”€â”€ NewsletterSection.tsx
+â”‚       â””â”€â”€ NewsletterSection.module.css
+â”œâ”€â”€ ui/
+â”‚   â”œâ”€â”€ Button/
+â”‚   â”‚   â”œâ”€â”€ Button.tsx
+â”‚   â”‚   â””â”€â”€ Button.module.css
+â”‚   â”œâ”€â”€ Input/
+â”‚   â”‚   â”œâ”€â”€ Input.tsx
+â”‚   â”‚   â””â”€â”€ Input.module.css
+â”‚   â”œâ”€â”€ Select/
+â”‚   â”‚   â”œâ”€â”€ Select.tsx
+â”‚   â”‚   â””â”€â”€ Select.module.css
+â”‚   â”œâ”€â”€ Accordion/
+â”‚   â”‚   â”œâ”€â”€ Accordion.tsx
+â”‚   â”‚   â””â”€â”€ Accordion.module.css
+â”‚   â”œâ”€â”€ Modal/
+â”‚   â”‚   â”œâ”€â”€ Modal.tsx
+â”‚   â”‚   â””â”€â”€ Modal.module.css
+â”‚   â”œâ”€â”€ Breadcrumb/
+â”‚   â”‚   â”œâ”€â”€ Breadcrumb.tsx
+â”‚   â”‚   â””â”€â”€ Breadcrumb.module.css
+â”‚   â”œâ”€â”€ LoadMoreButton/
+â”‚   â”‚   â”œâ”€â”€ LoadMoreButton.tsx
+â”‚   â”‚   â””â”€â”€ LoadMoreButton.module.css
+â”‚   â”œâ”€â”€ SkeletonLoader/
+â”‚   â”‚   â”œâ”€â”€ SkeletonLoader.tsx
+â”‚   â”‚   â””â”€â”€ SkeletonLoader.module.css
+â”‚   â”œâ”€â”€ Badge/
+â”‚   â”‚   â””â”€â”€ Badge.tsx                    # "Sale", "New", "Sold Out" badges
+â”‚   â”œâ”€â”€ Divider/
+â”‚   â”‚   â””â”€â”€ Divider.tsx
+â”‚   â””â”€â”€ BackToTop/
+â”‚       â”œâ”€â”€ BackToTop.tsx
+â”‚       â””â”€â”€ BackToTop.module.css
+â””â”€â”€ icons/
+    â””â”€â”€ index.tsx                        # All SVG icons exported as React components
 ```
 
 ### 5.2 Key Component Specifications
@@ -528,7 +528,7 @@ interface HeaderProps {
 }
 ```
 * **Desktop:** Logo (left) | Navigation Links (center) | Icons: Search, Account, Cart with count badge (right).
-* **Mobile:** Hamburger (left) | Logo (center) | Search + Cart (right). See `design.md` section 13.أ.
+* **Mobile:** Hamburger (left) | Logo (center) | Search + Cart (right). See `design.md` section 13.Ø£.
 * **Sticky** on both desktop and mobile.
 * **Navigation Links:** Home, Shop (dropdown with collections), About, Contact.
 * **Shop Dropdown (Desktop):** On hover, shows a clean dropdown listing all main collections. No mega-menu complexity.
@@ -546,9 +546,9 @@ interface CartDrawerProps {
 * "Your cart is empty" state with CTA.
 
 #### **SearchOverlay**
-* Full-screen white overlay (see `design.md` section 11.ب).
+* Full-screen white overlay (see `design.md` section 11.Ø¨).
 * Large input field, no border, underline only.
-* Debounced search (300ms) — shows results as user types.
+* Debounced search (300ms) â€” shows results as user types.
 * Shows up to 6 product suggestions with thumbnails.
 * "View all results" link goes to `/search?q=...`.
 * Close with X icon or Escape key.
@@ -580,9 +580,9 @@ interface ButtonProps {
 | Feature | Specification |
 |---------|---------------|
 | **Cart Icon Badge** | Shows total quantity as a small number badge (top-right of cart icon). `background: #111111; color: #FFFFFF; font-size: 10px; min-width: 16px; height: 16px; border-radius: 50%;` |
-| **Add to Cart** | Button shows "ADD TO CART" → "ADDING..." (with spinner) → "ADDED ✓" (1.5s) → reverts to "ADD TO CART". If no variant selected and product has variants, prompt user to select. |
+| **Add to Cart** | Button shows "ADD TO CART" â†’ "ADDING..." (with spinner) â†’ "ADDED âœ“" (1.5s) â†’ reverts to "ADD TO CART". If no variant selected and product has variants, prompt user to select. |
 | **Cart Drawer** | Opens automatically when item is added. Can also be toggled via cart icon. |
-| **Quantity Update** | `−` and `+` buttons. Minimum quantity: 1. Debounced API call (500ms) to prevent spamming. |
+| **Quantity Update** | `âˆ’` and `+` buttons. Minimum quantity: 1. Debounced API call (500ms) to prevent spamming. |
 | **Remove Item** | Trash icon. Confirm with brief animation (item slides out). No confirmation dialog. |
 | **Cart Persistence** | Cart ID stored in cookie. Survives page refresh and browser close (30 days). |
 | **Checkout** | "CHECKOUT" button redirects to `cart.checkoutUrl` (Shopify-hosted). |
@@ -591,11 +591,11 @@ interface ButtonProps {
 
 | Feature | Specification |
 |---------|---------------|
-| **Trigger** | Click search icon in header → Full-screen overlay opens |
+| **Trigger** | Click search icon in header â†’ Full-screen overlay opens |
 | **Input** | Auto-focused, large font (`24px` desktop, `20px` mobile), underline-only |
 | **Behavior** | Debounced (300ms). Shows results as user types. Searches product titles and types. |
 | **Results Preview** | Up to 6 products with thumbnail, title, price. Clicking a result goes to PDP. |
-| **Full Results** | "View all X results" link → navigates to `/search?q=...` page |
+| **Full Results** | "View all X results" link â†’ navigates to `/search?q=...` page |
 | **No Results** | "No products found" message with suggested collections |
 | **Close** | X button, Escape key, or clicking outside results |
 | **Mobile** | Same overlay behavior. `font-size: 20px`. Touch-friendly results. |
@@ -605,11 +605,11 @@ interface ButtonProps {
 #### **Sort Options:**
 | Value | Label (EN) | Label (AR) | API `sortKey` | `reverse` |
 |-------|-----------|-----------|---------------|-----------|
-| `featured` | Featured | مميز | `MANUAL` | `false` |
-| `price-asc` | Price: Low to High | السعر: من الأقل | `PRICE` | `false` |
-| `price-desc` | Price: High to Low | السعر: من الأعلى | `PRICE` | `true` |
-| `newest` | Newest | الأحدث | `CREATED` | `true` |
-| `best-selling` | Best Selling | الأكثر مبيعاً | `BEST_SELLING` | `false` |
+| `featured` | Featured | Ù…Ù…ÙŠØ² | `MANUAL` | `false` |
+| `price-asc` | Price: Low to High | Ø§Ù„Ø³Ø¹Ø±: Ù…Ù† Ø§Ù„Ø£Ù‚Ù„ | `PRICE` | `false` |
+| `price-desc` | Price: High to Low | Ø§Ù„Ø³Ø¹Ø±: Ù…Ù† Ø§Ù„Ø£Ø¹Ù„Ù‰ | `PRICE` | `true` |
+| `newest` | Newest | Ø§Ù„Ø£Ø­Ø¯Ø« | `CREATED` | `true` |
+| `best-selling` | Best Selling | Ø§Ù„Ø£ÙƒØ«Ø± Ù…Ø¨ÙŠØ¹Ø§Ù‹ | `BEST_SELLING` | `false` |
 
 #### **Filter Options:**
 | Filter | Type | Source |
@@ -621,16 +621,16 @@ interface ButtonProps {
 
 #### **Filter Behavior:**
 * Desktop: Sidebar on the left, product grid on the right.
-* Mobile: "Filter" button → opens full-screen modal with all filters + "Apply" button fixed at bottom.
+* Mobile: "Filter" button â†’ opens full-screen modal with all filters + "Apply" button fixed at bottom.
 * Active filters shown as removable chips above the grid.
 * Filter changes update URL search params (for shareability and back-button support).
 
-### 6.4 Wishlist (Phase 2 — Optional)
+### 6.4 Wishlist (Phase 2 â€” Optional)
 
 * Stored in `localStorage` (no account required).
-* Heart icon on each product card (thin stroke → filled on toggle).
+* Heart icon on each product card (thin stroke â†’ filled on toggle).
 * Wishlist page accessible from header icon.
-* Not a Shopify feature — fully client-side.
+* Not a Shopify feature â€” fully client-side.
 
 ### 6.5 Newsletter Subscription
 
@@ -638,7 +638,7 @@ interface ButtonProps {
 * Submits to Shopify's customer API (`customerCreate` mutation with `acceptsMarketing: true`) or a third-party service.
 * Success: "Thank you for subscribing" inline message (replaces form briefly).
 * Error: "Please enter a valid email" inline error.
-* No pop-ups, no modals — inline form only.
+* No pop-ups, no modals â€” inline form only.
 
 ### 6.6 Announcement Bar (Optional)
 
@@ -653,7 +653,7 @@ interface ButtonProps {
 |---------|---------------|
 | Page navigation | Thin progress bar at top of page (NProgress-style), color `#111111` |
 | Product grid | Skeleton cards (gray pulse animation matching card dimensions) |
-| Product images | Skeleton rectangle → fade-in when loaded |
+| Product images | Skeleton rectangle â†’ fade-in when loaded |
 | Add to Cart button | Text changes to "ADDING..." with spinner |
 | Cart Drawer opening | Immediate open, items fetched (show skeleton if needed) |
 | Search results | Skeleton rows below search input |
@@ -701,15 +701,15 @@ The following collections should exist in Shopify Admin. The AI agent should bui
 
 | Field | Type | Required | Notes |
 |-------|------|----------|-------|
-| `title` | String | ✅ | Product name |
-| `handle` | String | ✅ | URL slug (auto-generated) |
-| `description` / `descriptionHtml` | String/HTML | ✅ | Product details |
-| `productType` | String | ✅ | "Ring", "Necklace", "Bracelet", etc. |
+| `title` | String | âœ… | Product name |
+| `handle` | String | âœ… | URL slug (auto-generated) |
+| `description` / `descriptionHtml` | String/HTML | âœ… | Product details |
+| `productType` | String | âœ… | "Ring", "Necklace", "Bracelet", etc. |
 | `vendor` | String | Optional | Designer/brand name |
 | `tags` | String[] | Optional | For filtering/search |
-| `images` | Image[] | ✅ | Minimum 1, ideally 3-5 per product |
-| `variants` | Variant[] | ✅ | At least 1 (default). Options: Size, Color |
-| `priceRange` | Object | ✅ | Auto-calculated from variants |
+| `images` | Image[] | âœ… | Minimum 1, ideally 3-5 per product |
+| `variants` | Variant[] | âœ… | At least 1 (default). Options: Size, Color |
+| `priceRange` | Object | âœ… | Auto-calculated from variants |
 | `compareAtPrice` | Money | Optional | Original price (for sale items) |
 | **Metafields:** | | | |
 | `custom.material` | String | Optional | "925 Sterling Silver", "Silver Plated", etc. |
@@ -722,15 +722,15 @@ The following content is hardcoded in the frontend (not from Shopify):
 
 #### **Hero Section:**
 * **Headline (EN):** "Elegance in Every Detail"
-* **Headline (AR):** "أناقة في كل تفصيلة"
+* **Headline (AR):** "Ø£Ù†Ø§Ù‚Ø© ÙÙŠ ÙƒÙ„ ØªÙØµÙŠÙ„Ø©"
 * **Subtitle (EN):** "Discover our curated collection of premium sterling silver jewelry"
-* **Subtitle (AR):** "اكتشفي مجموعتنا المميزة من المجوهرات الفضية الفاخرة"
-* **CTA:** "SHOP NOW" / "تسوقي الآن"
+* **Subtitle (AR):** "Ø§ÙƒØªØ´ÙÙŠ Ù…Ø¬Ù…ÙˆØ¹ØªÙ†Ø§ Ø§Ù„Ù…Ù…ÙŠØ²Ø© Ù…Ù† Ø§Ù„Ù…Ø¬ÙˆÙ‡Ø±Ø§Øª Ø§Ù„ÙØ¶ÙŠØ© Ø§Ù„ÙØ§Ø®Ø±Ø©"
+* **CTA:** "SHOP NOW" / "ØªØ³ÙˆÙ‚ÙŠ Ø§Ù„Ø¢Ù†"
 * **Images:** Hero images stored in `/public/images/hero/`
 
 #### **Brand Story Strip:**
 * **EN:** "Crafted with passion. Worn with confidence."
-* **AR:** "صُنعت بشغف. تُرتدى بثقة."
+* **AR:** "ØµÙÙ†Ø¹Øª Ø¨Ø´ØºÙ. ØªÙØ±ØªØ¯Ù‰ Ø¨Ø«Ù‚Ø©."
 
 #### **About Page Content:**
 * Brand origin story, craftsmanship philosophy, materials used.
@@ -740,36 +740,36 @@ The following content is hardcoded in the frontend (not from Shopify):
 
 ```
 Header Navigation:
-├── Home                    → /[locale]
-├── Shop                    → (dropdown)
-│   ├── All Products        → /[locale]/collections/all
-│   ├── Rings               → /[locale]/collections/rings
-│   ├── Necklaces           → /[locale]/collections/necklaces
-│   ├── Bracelets           → /[locale]/collections/bracelets
-│   ├── Earrings            → /[locale]/collections/earrings
-│   ├── Anklets             → /[locale]/collections/anklets
-│   └── New Arrivals        → /[locale]/collections/new-arrivals
-├── About                   → /[locale]/about
-└── Contact                 → /[locale]/contact
+â”œâ”€â”€ Home                    â†’ /[locale]
+â”œâ”€â”€ Shop                    â†’ (dropdown)
+â”‚   â”œâ”€â”€ All Products        â†’ /[locale]/collections/all
+â”‚   â”œâ”€â”€ Rings               â†’ /[locale]/collections/rings
+â”‚   â”œâ”€â”€ Necklaces           â†’ /[locale]/collections/necklaces
+â”‚   â”œâ”€â”€ Bracelets           â†’ /[locale]/collections/bracelets
+â”‚   â”œâ”€â”€ Earrings            â†’ /[locale]/collections/earrings
+â”‚   â”œâ”€â”€ Anklets             â†’ /[locale]/collections/anklets
+â”‚   â””â”€â”€ New Arrivals        â†’ /[locale]/collections/new-arrivals
+â”œâ”€â”€ About                   â†’ /[locale]/about
+â””â”€â”€ Contact                 â†’ /[locale]/contact
 
 Footer Navigation:
-├── Column 1: Shop
-│   ├── All Products
-│   ├── Rings
-│   ├── Necklaces
-│   ├── Bracelets
-│   └── Earrings
-├── Column 2: Info
-│   ├── About Us
-│   ├── Contact
-│   ├── Shipping Policy
-│   ├── Returns & Exchanges
-│   └── Privacy Policy
-├── Column 3: Newsletter
-│   └── Email input + Subscribe button
-└── Bottom Bar:
-    ├── © 2026 Roze Silvers. All rights reserved.
-    └── Social Icons: Instagram, Facebook, TikTok, WhatsApp
+â”œâ”€â”€ Column 1: Shop
+â”‚   â”œâ”€â”€ All Products
+â”‚   â”œâ”€â”€ Rings
+â”‚   â”œâ”€â”€ Necklaces
+â”‚   â”œâ”€â”€ Bracelets
+â”‚   â””â”€â”€ Earrings
+â”œâ”€â”€ Column 2: Info
+â”‚   â”œâ”€â”€ About Us
+â”‚   â”œâ”€â”€ Contact
+â”‚   â”œâ”€â”€ Shipping Policy
+â”‚   â”œâ”€â”€ Returns & Exchanges
+â”‚   â””â”€â”€ Privacy Policy
+â”œâ”€â”€ Column 3: Newsletter
+â”‚   â””â”€â”€ Email input + Subscribe button
+â””â”€â”€ Bottom Bar:
+    â”œâ”€â”€ Â© 2026 Rose Silvers. All rights reserved.
+    â””â”€â”€ Social Icons: Instagram, Facebook, TikTok, WhatsApp
 ```
 
 ---
@@ -781,10 +781,10 @@ Footer Navigation:
 ```typescript
 // app/layout.tsx
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rozesilvers.com'),
+  metadataBase: new URL('https://rosesilvers.com'),
   title: {
-    default: 'Roze Silvers — Premium Sterling Silver Jewelry',
-    template: '%s | Roze Silvers',
+    default: 'Rose Silvers â€” Premium Sterling Silver Jewelry',
+    template: '%s | Rose Silvers',
   },
   description: 'Discover elegant sterling silver jewelry. Rings, necklaces, bracelets, and earrings crafted with precision and passion.',
   keywords: ['silver jewelry', 'sterling silver', 'rings', 'necklaces', 'bracelets', 'earrings', 'premium jewelry', 'Egyptian jewelry'],
@@ -792,7 +792,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     alternateLocale: 'ar_EG',
-    siteName: 'Roze Silvers',
+    siteName: 'Rose Silvers',
     images: [{ url: '/images/og-default.jpg', width: 1200, height: 630 }],
   },
   twitter: {
@@ -809,14 +809,14 @@ export const metadata: Metadata = {
 
 | Page | Title | Description |
 |------|-------|-------------|
-| Homepage | "Roze Silvers — Premium Sterling Silver Jewelry" | "Discover elegant sterling silver jewelry..." |
-| Collection | "[Collection Name] — Roze Silvers" | "[Collection description from Shopify]" |
-| Product | "[Product Title] — Roze Silvers" | "[First 155 chars of product description]" |
-| Search | "Search Results for [query] — Roze Silvers" | "Browse search results for [query]" |
-| Cart | "Shopping Cart — Roze Silvers" | `noindex` — cart pages should not be indexed |
-| About | "About Us — Roze Silvers" | "Learn about our passion for crafting premium silver jewelry" |
-| Contact | "Contact Us — Roze Silvers" | "Get in touch with Roze Silvers" |
-| 404 | "Page Not Found — Roze Silvers" | `noindex` |
+| Homepage | "Rose Silvers â€” Premium Sterling Silver Jewelry" | "Discover elegant sterling silver jewelry..." |
+| Collection | "[Collection Name] â€” Rose Silvers" | "[Collection description from Shopify]" |
+| Product | "[Product Title] â€” Rose Silvers" | "[First 155 chars of product description]" |
+| Search | "Search Results for [query] â€” Rose Silvers" | "Browse search results for [query]" |
+| Cart | "Shopping Cart â€” Rose Silvers" | `noindex` â€” cart pages should not be indexed |
+| About | "About Us â€” Rose Silvers" | "Learn about our passion for crafting premium silver jewelry" |
+| Contact | "Contact Us â€” Rose Silvers" | "Get in touch with Rose Silvers" |
+| 404 | "Page Not Found â€” Rose Silvers" | `noindex` |
 
 ### 8.3 Structured Data (JSON-LD)
 
@@ -828,7 +828,7 @@ export const metadata: Metadata = {
   "name": "[Product Title]",
   "image": "[Product Image URLs]",
   "description": "[Product Description]",
-  "brand": { "@type": "Brand", "name": "Roze Silvers" },
+  "brand": { "@type": "Brand", "name": "Rose Silvers" },
   "offers": {
     "@type": "Offer",
     "priceCurrency": "EGP",
@@ -844,11 +844,11 @@ export const metadata: Metadata = {
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Roze Silvers",
-  "url": "https://rozesilvers.com",
+  "name": "Rose Silvers",
+  "url": "https://rosesilvers.com",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://rozesilvers.com/en/search?q={search_term_string}",
+    "target": "https://rosesilvers.com/en/search?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -864,11 +864,11 @@ export const metadata: Metadata = {
 | Item | Implementation |
 |------|----------------|
 | **Canonical URLs** | Every page must have `<link rel="canonical" href="...">`. Locale variants linked with `hreflang`. |
-| **hreflang tags** | `<link rel="alternate" hreflang="en" href="https://rozesilvers.com/en/...">` and `hreflang="ar"`. |
+| **hreflang tags** | `<link rel="alternate" hreflang="en" href="https://rosesilvers.com/en/...">` and `hreflang="ar"`. |
 | **Sitemap** | Auto-generated `sitemap.xml` via Next.js. Include all products, collections, and static pages. |
 | **robots.txt** | Allow all. Disallow `/cart`, `/api/`. |
 | **Image Alt Text** | Use Shopify's `altText` field. Fallback to product title if missing. |
-| **Heading Hierarchy** | One `<h1>` per page. Proper `<h2>` → `<h3>` nesting. |
+| **Heading Hierarchy** | One `<h1>` per page. Proper `<h2>` â†’ `<h3>` nesting. |
 | **Semantic HTML** | `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`, `<header>`. |
 | **Page Speed** | Target: Lighthouse score 90+ on mobile. See Performance section. |
 
@@ -889,7 +889,7 @@ export const metadata: Metadata = {
 
 | Rule | Implementation |
 |------|----------------|
-| **Format** | Use `next/image` component — auto-serves WebP/AVIF |
+| **Format** | Use `next/image` component â€” auto-serves WebP/AVIF |
 | **Sizing** | Always provide `width` and `height` props. Shopify CDN images support `_WIDTHxHEIGHT` URL transforms. |
 | **Lazy Loading** | All images `loading="lazy"` except: hero image, first 4 product cards (above-the-fold) |
 | **srcset** | Handled automatically by `next/image`. Use `sizes` prop correctly: `sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 25vw"` |
@@ -905,13 +905,13 @@ export const metadata: Metadata = {
   src: url('/fonts/PlayfairDisplay-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;    /* Critical — prevents FOIT */
+  font-display: swap;    /* Critical â€” prevents FOIT */
 }
 
-/* Same for Inter, Amiri, Tajawal — all with font-display: swap */
+/* Same for Inter, Amiri, Tajawal â€” all with font-display: swap */
 ```
 
-* Self-host all fonts in `/public/fonts/` (do NOT use Google Fonts CDN — eliminates a third-party request).
+* Self-host all fonts in `/public/fonts/` (do NOT use Google Fonts CDN â€” eliminates a third-party request).
 * Preload critical fonts in `<head>`:
   ```html
   <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -935,7 +935,7 @@ export const metadata: Metadata = {
 | **Product Data** | ISR (Incremental Static Regeneration) with `revalidate: 60` (1 minute). Pages are static but refresh periodically. |
 | **Collection Pages** | ISR with `revalidate: 60`. |
 | **Static Pages** (About, Contact, Policies) | SSG (fully static). Rebuild only on deploy. |
-| **Cart Data** | No caching — always fresh from Shopify API. |
+| **Cart Data** | No caching â€” always fresh from Shopify API. |
 | **Images** | CDN-cached via Shopify's CDN and Vercel's Edge Network. |
 
 ---
@@ -965,7 +965,7 @@ export const metadata: Metadata = {
   "product": {
     "addToCart": "ADD TO CART",
     "adding": "ADDING...",
-    "added": "ADDED ✓",
+    "added": "ADDED âœ“",
     "soldOut": "SOLD OUT",
     "selectSize": "Select Size",
     "selectColor": "Select Color",
@@ -1019,7 +1019,7 @@ export const metadata: Metadata = {
     "shippingPolicy": "Shipping Policy",
     "returnsPolicy": "Returns & Exchanges",
     "privacyPolicy": "Privacy Policy",
-    "copyright": "© 2026 Roze Silvers. All rights reserved."
+    "copyright": "Â© 2026 Rose Silvers. All rights reserved."
   },
   "common": {
     "shopNow": "SHOP NOW",
@@ -1035,78 +1035,78 @@ export const metadata: Metadata = {
 // messages/ar.json
 {
   "nav": {
-    "home": "الرئيسية",
-    "shop": "تسوقي",
-    "about": "عن روز سيلفرز",
-    "contact": "تواصلي معنا",
-    "allProducts": "كل المنتجات",
-    "newArrivals": "وصل حديثاً"
+    "home": "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©",
+    "shop": "ØªØ³ÙˆÙ‚ÙŠ",
+    "about": "Ø¹Ù† Ø±ÙˆØ² Ø³ÙŠÙ„ÙØ±Ø²",
+    "contact": "ØªÙˆØ§ØµÙ„ÙŠ Ù…Ø¹Ù†Ø§",
+    "allProducts": "ÙƒÙ„ Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª",
+    "newArrivals": "ÙˆØµÙ„ Ø­Ø¯ÙŠØ«Ø§Ù‹"
   },
   "product": {
-    "addToCart": "أضيفي للسلة",
-    "adding": "جاري الإضافة...",
-    "added": "تمت الإضافة ✓",
-    "soldOut": "نفذت الكمية",
-    "selectSize": "اختاري المقاس",
-    "selectColor": "اختاري اللون",
-    "quantity": "الكمية",
-    "description": "الوصف",
-    "details": "التفاصيل",
-    "shipping": "الشحن والإرجاع",
-    "careInstructions": "تعليمات العناية",
-    "relatedProducts": "قد يعجبك أيضاً",
-    "material": "الخامة",
-    "weight": "الوزن"
+    "addToCart": "Ø£Ø¶ÙŠÙÙŠ Ù„Ù„Ø³Ù„Ø©",
+    "adding": "Ø¬Ø§Ø±ÙŠ Ø§Ù„Ø¥Ø¶Ø§ÙØ©...",
+    "added": "ØªÙ…Øª Ø§Ù„Ø¥Ø¶Ø§ÙØ© âœ“",
+    "soldOut": "Ù†ÙØ°Øª Ø§Ù„ÙƒÙ…ÙŠØ©",
+    "selectSize": "Ø§Ø®ØªØ§Ø±ÙŠ Ø§Ù„Ù…Ù‚Ø§Ø³",
+    "selectColor": "Ø§Ø®ØªØ§Ø±ÙŠ Ø§Ù„Ù„ÙˆÙ†",
+    "quantity": "Ø§Ù„ÙƒÙ…ÙŠØ©",
+    "description": "Ø§Ù„ÙˆØµÙ",
+    "details": "Ø§Ù„ØªÙØ§ØµÙŠÙ„",
+    "shipping": "Ø§Ù„Ø´Ø­Ù† ÙˆØ§Ù„Ø¥Ø±Ø¬Ø§Ø¹",
+    "careInstructions": "ØªØ¹Ù„ÙŠÙ…Ø§Øª Ø§Ù„Ø¹Ù†Ø§ÙŠØ©",
+    "relatedProducts": "Ù‚Ø¯ ÙŠØ¹Ø¬Ø¨Ùƒ Ø£ÙŠØ¶Ø§Ù‹",
+    "material": "Ø§Ù„Ø®Ø§Ù…Ø©",
+    "weight": "Ø§Ù„ÙˆØ²Ù†"
   },
   "cart": {
-    "title": "سلة التسوق",
-    "empty": "سلتك فارغة",
-    "continueShopping": "تابعي التسوق",
-    "subtotal": "المجموع",
-    "shippingNote": "الشحن يُحسب عند الدفع",
-    "checkout": "إتمام الطلب",
-    "remove": "حذف"
+    "title": "Ø³Ù„Ø© Ø§Ù„ØªØ³ÙˆÙ‚",
+    "empty": "Ø³Ù„ØªÙƒ ÙØ§Ø±ØºØ©",
+    "continueShopping": "ØªØ§Ø¨Ø¹ÙŠ Ø§Ù„ØªØ³ÙˆÙ‚",
+    "subtotal": "Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹",
+    "shippingNote": "Ø§Ù„Ø´Ø­Ù† ÙŠÙØ­Ø³Ø¨ Ø¹Ù†Ø¯ Ø§Ù„Ø¯ÙØ¹",
+    "checkout": "Ø¥ØªÙ…Ø§Ù… Ø§Ù„Ø·Ù„Ø¨",
+    "remove": "Ø­Ø°Ù"
   },
   "search": {
-    "placeholder": "ابحثي عن منتج...",
-    "noResults": "لا توجد نتائج لـ",
-    "viewAll": "عرض كل النتائج",
-    "resultsFor": "نتيجة لـ"
+    "placeholder": "Ø§Ø¨Ø­Ø«ÙŠ Ø¹Ù† Ù…Ù†ØªØ¬...",
+    "noResults": "Ù„Ø§ ØªÙˆØ¬Ø¯ Ù†ØªØ§Ø¦Ø¬ Ù„Ù€",
+    "viewAll": "Ø¹Ø±Ø¶ ÙƒÙ„ Ø§Ù„Ù†ØªØ§Ø¦Ø¬",
+    "resultsFor": "Ù†ØªÙŠØ¬Ø© Ù„Ù€"
   },
   "collection": {
-    "filter": "تصفية",
-    "sort": "ترتيب",
-    "sortFeatured": "مميز",
-    "sortPriceLow": "السعر: من الأقل",
-    "sortPriceHigh": "السعر: من الأعلى",
-    "sortNewest": "الأحدث",
-    "sortBestSelling": "الأكثر مبيعاً",
-    "noProducts": "لا توجد منتجات",
-    "loadMore": "عرض المزيد",
-    "inStock": "متوفر",
-    "priceRange": "نطاق السعر",
-    "applyFilters": "تطبيق",
-    "clearAll": "مسح الكل"
+    "filter": "ØªØµÙÙŠØ©",
+    "sort": "ØªØ±ØªÙŠØ¨",
+    "sortFeatured": "Ù…Ù…ÙŠØ²",
+    "sortPriceLow": "Ø§Ù„Ø³Ø¹Ø±: Ù…Ù† Ø§Ù„Ø£Ù‚Ù„",
+    "sortPriceHigh": "Ø§Ù„Ø³Ø¹Ø±: Ù…Ù† Ø§Ù„Ø£Ø¹Ù„Ù‰",
+    "sortNewest": "Ø§Ù„Ø£Ø­Ø¯Ø«",
+    "sortBestSelling": "Ø§Ù„Ø£ÙƒØ«Ø± Ù…Ø¨ÙŠØ¹Ø§Ù‹",
+    "noProducts": "Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù†ØªØ¬Ø§Øª",
+    "loadMore": "Ø¹Ø±Ø¶ Ø§Ù„Ù…Ø²ÙŠØ¯",
+    "inStock": "Ù…ØªÙˆÙØ±",
+    "priceRange": "Ù†Ø·Ø§Ù‚ Ø§Ù„Ø³Ø¹Ø±",
+    "applyFilters": "ØªØ·Ø¨ÙŠÙ‚",
+    "clearAll": "Ù…Ø³Ø­ Ø§Ù„ÙƒÙ„"
   },
   "footer": {
-    "shop": "تسوقي",
-    "info": "معلومات",
-    "newsletter": "النشرة البريدية",
-    "newsletterPlaceholder": "أدخلي بريدك الإلكتروني",
-    "subscribe": "اشتركي",
-    "subscribeSuccess": "شكراً لاشتراكك!",
-    "aboutUs": "عن روز سيلفرز",
-    "shippingPolicy": "سياسة الشحن",
-    "returnsPolicy": "الإرجاع والاستبدال",
-    "privacyPolicy": "سياسة الخصوصية",
-    "copyright": "© 2026 روز سيلفرز. جميع الحقوق محفوظة."
+    "shop": "ØªØ³ÙˆÙ‚ÙŠ",
+    "info": "Ù…Ø¹Ù„ÙˆÙ…Ø§Øª",
+    "newsletter": "Ø§Ù„Ù†Ø´Ø±Ø© Ø§Ù„Ø¨Ø±ÙŠØ¯ÙŠØ©",
+    "newsletterPlaceholder": "Ø£Ø¯Ø®Ù„ÙŠ Ø¨Ø±ÙŠØ¯Ùƒ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ",
+    "subscribe": "Ø§Ø´ØªØ±ÙƒÙŠ",
+    "subscribeSuccess": "Ø´ÙƒØ±Ø§Ù‹ Ù„Ø§Ø´ØªØ±Ø§ÙƒÙƒ!",
+    "aboutUs": "Ø¹Ù† Ø±ÙˆØ² Ø³ÙŠÙ„ÙØ±Ø²",
+    "shippingPolicy": "Ø³ÙŠØ§Ø³Ø© Ø§Ù„Ø´Ø­Ù†",
+    "returnsPolicy": "Ø§Ù„Ø¥Ø±Ø¬Ø§Ø¹ ÙˆØ§Ù„Ø§Ø³ØªØ¨Ø¯Ø§Ù„",
+    "privacyPolicy": "Ø³ÙŠØ§Ø³Ø© Ø§Ù„Ø®ØµÙˆØµÙŠØ©",
+    "copyright": "Â© 2026 Ø±ÙˆØ² Ø³ÙŠÙ„ÙØ±Ø². Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©."
   },
   "common": {
-    "shopNow": "تسوقي الآن",
-    "backToHome": "العودة للرئيسية",
-    "pageNotFound": "الصفحة غير موجودة",
-    "error": "حدث خطأ",
-    "tryAgain": "حاولي مرة أخرى"
+    "shopNow": "ØªØ³ÙˆÙ‚ÙŠ Ø§Ù„Ø¢Ù†",
+    "backToHome": "Ø§Ù„Ø¹ÙˆØ¯Ø© Ù„Ù„Ø±Ø¦ÙŠØ³ÙŠØ©",
+    "pageNotFound": "Ø§Ù„ØµÙØ­Ø© ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯Ø©",
+    "error": "Ø­Ø¯Ø« Ø®Ø·Ø£",
+    "tryAgain": "Ø­Ø§ÙˆÙ„ÙŠ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰"
   }
 }
 ```
@@ -1115,7 +1115,7 @@ export const metadata: Metadata = {
 
 Use **CSS logical properties** instead of physical ones to handle RTL automatically:
 
-| ❌ Don't Use | ✅ Use Instead | Why |
+| âŒ Don't Use | âœ… Use Instead | Why |
 |-------------|---------------|-----|
 | `margin-left: 16px` | `margin-inline-start: 16px` | Flips automatically in RTL |
 | `padding-right: 24px` | `padding-inline-end: 24px` | Flips automatically in RTL |
@@ -1133,8 +1133,8 @@ Use **CSS logical properties** instead of physical ones to handle RTL automatica
 ### 10.4 Language Switcher
 
 * **Position:** In the header (desktop), at the bottom of the mobile menu (mobile).
-* **Design:** Simple text toggle: `EN | AR` or `English | العربية`.
-* **Behavior:** Clicking switches the locale in the URL path (`/en/...` ↔ `/ar/...`) while keeping the same page.
+* **Design:** Simple text toggle: `EN | AR` or `English | Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©`.
+* **Behavior:** Clicking switches the locale in the URL path (`/en/...` â†” `/ar/...`) while keeping the same page.
 * **Product content from Shopify** stays in the language set in Shopify admin (typically English or Arabic depending on the store setup). Translation of product content is managed in Shopify, NOT in the frontend.
 
 ---
@@ -1145,7 +1145,7 @@ Use **CSS logical properties** instead of physical ones to handle RTL automatica
 
 | Area | Requirement |
 |------|-------------|
-| **Color Contrast** | All text meets 4.5:1 ratio against background. `#111111` on `#F9F9F9` = 17.4:1 ✅. `#777777` on `#FFFFFF` = 4.48:1 (borderline — monitor this). |
+| **Color Contrast** | All text meets 4.5:1 ratio against background. `#111111` on `#F9F9F9` = 17.4:1 âœ…. `#777777` on `#FFFFFF` = 4.48:1 (borderline â€” monitor this). |
 | **Focus Indicators** | Every interactive element must have a visible focus ring: `outline: 2px solid #111111; outline-offset: 2px;`. Do NOT remove default focus styles without replacing them. |
 | **Keyboard Navigation** | All functionality accessible via keyboard. Tab order must be logical. Modals trap focus. Escape closes modals/drawers. |
 | **Screen Reader** | All images have `alt` text. Decorative images use `alt=""`. Icon buttons have `aria-label`. |
@@ -1162,7 +1162,7 @@ Use **CSS logical properties** instead of physical ones to handle RTL automatica
 | **Accordion** | `<button>` trigger with `aria-expanded`. Content panel with `aria-hidden` when collapsed. Uses `id` for `aria-controls`. |
 | **Product Images** | All product images have descriptive `alt` text from Shopify. Gallery navigation has `aria-label="Next image"` / `"Previous image"`. |
 | **Variant Selector** | Uses `role="radiogroup"` with `role="radio"` for each option. `aria-checked` state. |
-| **Quantity Selector** | `−` button: `aria-label="Decrease quantity"`. `+` button: `aria-label="Increase quantity"`. Input: `aria-label="Quantity"`. |
+| **Quantity Selector** | `âˆ’` button: `aria-label="Decrease quantity"`. `+` button: `aria-label="Increase quantity"`. Input: `aria-label="Quantity"`. |
 | **Toast Notifications** | `role="alert"` with `aria-live="assertive"`. |
 | **Loading States** | Skeleton loaders have `aria-hidden="true"`. Actual content areas have `aria-busy="true"` while loading. |
 
@@ -1175,18 +1175,18 @@ Use **CSS logical properties** instead of physical ones to handle RTL automatica
 | Item | Choice | Why |
 |------|--------|-----|
 | **Platform** | **Vercel** | Native Next.js support, Edge Network, automatic HTTPS, preview deployments |
-| **Domain** | `rozesilvers.com` | Custom domain connected via Vercel |
-| **SSL** | Automatic via Vercel | — |
+| **Domain** | `rosesilvers.com` | Custom domain connected via Vercel |
+| **SSL** | Automatic via Vercel | â€” |
 | **CDN** | Vercel Edge Network | Global edge caching for static assets and ISR pages |
 
 ### 12.2 Environment Variables
 
 | Variable | Location | Exposed to Client? |
 |----------|----------|-------------------|
-| `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` | Vercel Environment Variables | ✅ Yes (public) |
-| `NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN` | Vercel Environment Variables | ✅ Yes (public — Storefront token is designed to be public) |
-| `SHOPIFY_ADMIN_ACCESS_TOKEN` | Vercel Environment Variables | ❌ No (server-side only) |
-| `NEXT_PUBLIC_SITE_URL` | Vercel Environment Variables | ✅ Yes |
+| `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN` | Vercel Environment Variables | âœ… Yes (public) |
+| `NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN` | Vercel Environment Variables | âœ… Yes (public â€” Storefront token is designed to be public) |
+| `SHOPIFY_ADMIN_ACCESS_TOKEN` | Vercel Environment Variables | âŒ No (server-side only) |
+| `NEXT_PUBLIC_SITE_URL` | Vercel Environment Variables | âœ… Yes |
 
 ### 12.3 Deployment Pipeline
 
@@ -1200,10 +1200,10 @@ Use **CSS logical properties** instead of physical ones to handle RTL automatica
 
 ```env
 # Shopify Storefront API
-NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=rozesilvers.myshopify.com
+NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=rosesilvers.myshopify.com
 NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=your_storefront_access_token
 
-# Shopify Admin API (server-side only — for advanced operations if needed)
+# Shopify Admin API (server-side only â€” for advanced operations if needed)
 SHOPIFY_ADMIN_ACCESS_TOKEN=your_admin_access_token
 
 # Site
@@ -1226,7 +1226,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 ---
 
-## 13. Constraints — What NOT To Do
+## 13. Constraints â€” What NOT To Do
 
 > **This section is CRITICAL.** These are hard rules that the AI agent must NEVER violate. Breaking any of these rules will result in a product that does not match the brand or technical requirements.
 
@@ -1234,7 +1234,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 > All visual constraints from `design.md` section 7 apply. The following is a summary plus additional rules:
 
-| ❌ NEVER DO THIS | ✅ DO THIS INSTEAD | WHY |
+| âŒ NEVER DO THIS | âœ… DO THIS INSTEAD | WHY |
 |-----------------|-------------------|-----|
 | Use `#000000` (pure black) | Use `#111111` or `#1A1A1A` | Pure black is harsh and feels cheap |
 | Use bright/loud accent colors (red, neon green, bright blue) | Use muted, desaturated tones | Loud colors destroy the premium feel |
@@ -1242,14 +1242,14 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 | Use heavy box shadows | Use ultra-light shadows: `rgba(0,0,0, 0.04)` max | Heavy shadows look like Bootstrap defaults |
 | Use font-weight `700`, `800`, `900` | Use `300`, `400`, `500` max | Heavy weights feel aggressive, not elegant |
 | Use default system fonts (Arial, Tahoma) | Use Playfair Display, Inter, Amiri, Tajawal | Brand fonts are essential |
-| Use bouncy/spring animations | Use slow `cubic-bezier(0.25, 0.46, 0.45, 0.94)` with `0.3s`+ duration | Bouncy = playful ≠ premium |
+| Use bouncy/spring animations | Use slow `cubic-bezier(0.25, 0.46, 0.45, 0.94)` with `0.3s`+ duration | Bouncy = playful â‰  premium |
 | Cram elements together (tight margins) | Use generous whitespace (`--space-xl` and above between sections) | Whitespace IS the luxury |
 | Use different aspect ratios for product images in the same grid | Use uniform `aspect-ratio` + `object-fit: cover` | Inconsistent images break the grid |
 | Add gradient backgrounds, patterns, or textures to sections | Use flat solid colors (`#F9F9F9`, `#FFFFFF`) | Gradients look dated for luxury brands |
 
 ### 13.2 Technical Constraints
 
-| ❌ NEVER DO THIS | WHY |
+| âŒ NEVER DO THIS | WHY |
 |-----------------|-----|
 | Install TailwindCSS, Bootstrap, Material UI, or any CSS framework | We use vanilla CSS Modules. No exceptions. |
 | Use `styled-components` or `emotion` | CSS Modules are the standard for this project |
@@ -1264,7 +1264,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 ### 13.3 Content Constraints
 
-| ❌ NEVER DO THIS | WHY |
+| âŒ NEVER DO THIS | WHY |
 |-----------------|-----|
 | Use placeholder/Lorem Ipsum text in production | All text must be real content from translations or Shopify. Use `<!-- TODO -->` comments for content that needs brand input. |
 | Hardcode product data (prices, titles, images) | ALL product data comes from Shopify Storefront API. Zero hardcoded products. |
@@ -1274,7 +1274,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 ### 13.4 UX Constraints
 
-| ❌ NEVER DO THIS | WHY |
+| âŒ NEVER DO THIS | WHY |
 |-----------------|-----|
 | Use infinite scroll for product grids | "Load More" button only. Infinite scroll hurts footer access, accessibility, and feels uncontrolled. |
 | Use numbered pagination | "Load More" button only. Numbered pagination looks like enterprise software. |
@@ -1283,7 +1283,7 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 | Auto-play videos or carousels | Nothing auto-plays. User controls all interactions. |
 | Add a "Back to Top" button with a bouncy animation | Smooth scroll, simple fade-in. No bounce. |
 | Show "Add to Cart" on hover over product cards (desktop) | "Add to Cart" is only on the Product Detail Page, not on cards. Cards link to the PDP. |
-| Implement a custom quantity input (type a number freely) | Use `−` / `+` buttons only, with min=1 and max=10 (or stock limit). |
+| Implement a custom quantity input (type a number freely) | Use `âˆ’` / `+` buttons only, with min=1 and max=10 (or stock limit). |
 | Use browser native `confirm()` or `alert()` dialogs | Use custom toast notifications or inline messages. Never native browser dialogs. |
 
 ### 13.5 Scope Constraints (What's NOT in MVP)
@@ -1292,18 +1292,18 @@ The following features are explicitly **out of scope** for the initial build. Do
 
 | Feature | Status | Notes |
 |---------|--------|-------|
-| Customer accounts (custom login/register pages) | ❌ Phase 2 | Use Shopify's hosted account pages for now |
-| Wishlist | ❌ Phase 2 | Design is defined but implementation is deferred |
-| Product reviews/ratings | ❌ Phase 2 | Requires third-party integration (Judge.me, Yotpo) |
-| Multi-currency support | ❌ Phase 2 | Single currency (EGP) for now |
-| Discount code input on cart page | ❌ Phase 2 | Handled by Shopify checkout |
-| Live chat widget | ❌ Out of scope | Would need third-party integration |
-| Blog / Articles section | ❌ Out of scope | Not part of the brand strategy currently |
-| Gift wrapping / Gift cards | ❌ Out of scope | May be added later in Shopify |
-| Product comparison | ❌ Out of scope | Not typical for jewelry stores |
-| Size recommendation / quiz | ❌ Phase 2 | Interesting feature for later |
-| Push notifications | ❌ Out of scope | Not appropriate for the brand |
-| PWA / Offline mode | ❌ Out of scope | Standard website is sufficient |
+| Customer accounts (custom login/register pages) | âŒ Phase 2 | Use Shopify's hosted account pages for now |
+| Wishlist | âŒ Phase 2 | Design is defined but implementation is deferred |
+| Product reviews/ratings | âŒ Phase 2 | Requires third-party integration (Judge.me, Yotpo) |
+| Multi-currency support | âŒ Phase 2 | Single currency (EGP) for now |
+| Discount code input on cart page | âŒ Phase 2 | Handled by Shopify checkout |
+| Live chat widget | âŒ Out of scope | Would need third-party integration |
+| Blog / Articles section | âŒ Out of scope | Not part of the brand strategy currently |
+| Gift wrapping / Gift cards | âŒ Out of scope | May be added later in Shopify |
+| Product comparison | âŒ Out of scope | Not typical for jewelry stores |
+| Size recommendation / quiz | âŒ Phase 2 | Interesting feature for later |
+| Push notifications | âŒ Out of scope | Not appropriate for the brand |
+| PWA / Offline mode | âŒ Out of scope | Standard website is sufficient |
 
 ### 13.6 Code Quality Constraints
 
@@ -1322,16 +1322,16 @@ The following features are explicitly **out of scope** for the initial build. Do
 
 ## Summary
 
-This PRD, combined with `design.md`, provides everything needed to build the Roze Silvers storefront:
+This PRD, combined with `design.md`, provides everything needed to build the Rose Silvers storefront:
 
 | Document | Covers |
 |----------|--------|
 | **PRD.md** (this file) | What to build, how it works, what data it uses, what NOT to do |
-| **design.md** | How it looks — every color, font, spacing, animation, and mobile behavior |
+| **design.md** | How it looks â€” every color, font, spacing, animation, and mobile behavior |
 
 **The AI agent should:**
 1. Read `design.md` first for visual reference
 2. Follow this PRD for architecture, features, and technical decisions
 3. Never deviate from the constraints in Section 13
-4. When in doubt about a visual decision → refer to `design.md`
-5. When in doubt about a feature decision → it's probably out of scope (Section 13.5)
+4. When in doubt about a visual decision â†’ refer to `design.md`
+5. When in doubt about a feature decision â†’ it's probably out of scope (Section 13.5)

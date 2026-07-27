@@ -21,7 +21,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.column}>
-          <h3 className={styles.title}>Roze Silvers</h3>
+          <h3 className={styles.title}>Rose Silvers</h3>
           <p className={styles.link} style={{ lineHeight: 1.6 }}>
             {t('brandDescription')}
           </p>

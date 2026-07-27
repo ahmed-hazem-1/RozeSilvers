@@ -58,7 +58,7 @@ export function Header() {
             aria-label="Switch Language" 
             style={{ fontSize: '14px', width: 'auto', padding: '0 8px', fontWeight: 500 }}
           >
-            {locale === 'ar' ? 'EN 🇬🇧' : 'AR 🇪🇬'}
+            {locale === 'ar' ? 'EN ðŸ‡¬ðŸ‡§' : 'AR ðŸ‡ªðŸ‡¬'}
           </button>
 
           <button className={`${styles.iconButton} ${styles.mobileOnly}`} aria-label="Search">
@@ -73,7 +73,7 @@ export function Header() {
 
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          Roze Silvers
+          Rose Silvers
         </Link>
 
         {/* Actions */}
@@ -84,7 +84,7 @@ export function Header() {
             aria-label="Switch Language" 
             style={{ fontSize: '14px', width: 'auto', padding: '0 8px', fontWeight: 500 }}
           >
-            {locale === 'ar' ? 'EN 🇬🇧' : 'AR 🇪🇬'}
+            {locale === 'ar' ? 'EN ðŸ‡¬ðŸ‡§' : 'AR ðŸ‡ªðŸ‡¬'}
           </button>
 
           <button className={`${styles.iconButton} ${styles.desktopOnly}`} aria-label="Search">

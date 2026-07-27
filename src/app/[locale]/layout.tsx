@@ -46,10 +46,10 @@ const tajawal = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rozesilvers.com'),
+  metadataBase: new URL('https://rosesilvers.com'),
   title: {
-    default: 'Roze Silvers — Premium Sterling Silver Jewelry',
-    template: '%s | Roze Silvers',
+    default: 'Rose Silvers — Premium Sterling Silver Jewelry',
+    template: '%s | Rose Silvers',
   },
   description: 'Discover elegant sterling silver jewelry. Rings, necklaces, bracelets, and earrings crafted with precision and passion.',
   keywords: ['silver jewelry', 'sterling silver', 'rings', 'necklaces', 'bracelets', 'earrings', 'premium jewelry', 'Egyptian jewelry'],
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     alternateLocale: 'ar_EG',
-    siteName: 'Roze Silvers',
+    siteName: 'Rose Silvers',
     images: [{ url: '/images/og-default.jpg', width: 1200, height: 630 }],
   },
   twitter: {
