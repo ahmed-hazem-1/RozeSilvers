@@ -21,7 +21,10 @@
     "careInstructions": "تعليمات العناية",
     "relatedProducts": "قد يعجبك أيضاً",
     "material": "الخامة",
-    "weight": "الوزن"
+    "weight": "الوزن",
+    "addToWishlist": "إضافة للمفضلة",
+    "removeFromWishlist": "إزالة من المفضلة",
+    "sale": "عرض"
   },
   "cart": {
     "title": "سلة التسوق",
@@ -30,7 +33,8 @@
     "subtotal": "المجموع",
     "shippingNote": "الشحن يُحسب عند الدفع",
     "checkout": "إتمام الطلب",
-    "remove": "حذف"
+    "remove": "حذف",
+    "youSaved": "لقد وفرت"
   },
   "search": {
     "placeholder": "ابحثي عن منتج...",

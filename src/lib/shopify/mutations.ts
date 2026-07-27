@@ -15,6 +15,7 @@ export const addToCartMutation = `
                   id
                   title
                   price { amount currencyCode }
+                  compareAtPrice { amount currencyCode }
                   image { url altText }
                   product { title handle }
                 }
@@ -50,6 +51,7 @@ export const createCartMutation = `
                   id
                   title
                   price { amount currencyCode }
+                  compareAtPrice { amount currencyCode }
                   image { url altText }
                   product { title handle }
                 }
@@ -85,6 +87,7 @@ export const updateCartMutation = `
                   id
                   title
                   price { amount currencyCode }
+                  compareAtPrice { amount currencyCode }
                   image { url altText }
                   product { title handle }
                 }
@@ -120,6 +123,7 @@ export const removeFromCartMutation = `
                   id
                   title
                   price { amount currencyCode }
+                  compareAtPrice { amount currencyCode }
                   image { url altText }
                   product { title handle }
                 }
@@ -155,6 +159,7 @@ export const cartDiscountCodesUpdateMutation = `
                   id
                   title
                   price { amount currencyCode }
+                  compareAtPrice { amount currencyCode }
                   image { url altText }
                   product { title handle }
                 }

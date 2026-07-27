@@ -83,6 +83,43 @@
   margin-bottom: var(--space-xl);
 }
 
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--space-xl);
+}
+
+.originalPrice {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.salePrice {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: bold;
+  color: #e02424;
+}
+
+.saleBadge {
+  position: absolute;
+  top: 16px;
+  inset-inline-start: 16px; /* RTL aware */
+  background-color: #e02424;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 10;
+  border-radius: 2px;
+}
+
 .description {
   font-family: var(--font-sans);
   line-height: 1.6;

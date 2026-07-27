@@ -27,6 +27,19 @@ export function CartDrawer() {
     setDiscountCode('');
   };
 
+  let totalSavings = 0;
+  let currencyCode = 'EGP';
+  if (cart?.lines?.edges) {
+    cart.lines.edges.forEach(({ node }: any) => {
+      const price = node.merchandise.price;
+      const compareAtPrice = node.merchandise.compareAtPrice;
+      currencyCode = price.currencyCode;
+      if (compareAtPrice && parseFloat(compareAtPrice.amount) > parseFloat(price.amount)) {
+        totalSavings += (parseFloat(compareAtPrice.amount) - parseFloat(price.amount)) * node.quantity;
+      }
+    });
+  }
+
   return (
     <>
       <div 
@@ -67,9 +80,17 @@ export function CartDrawer() {
                       <Link href={`/products/${product.handle}`} onClick={closeCart} className={styles.itemTitle}>
                         {product.title}
                       </Link>
-                      <p className={styles.itemPrice}>
-                        {parseFloat(price.amount).toLocaleString(undefined, { style: 'currency', currency: price.currencyCode })}
-                      </p>
+                      
+                      <div className={styles.priceContainer}>
+                        {node.merchandise.compareAtPrice && parseFloat(node.merchandise.compareAtPrice.amount) > parseFloat(price.amount) && (
+                          <span className={styles.originalPrice}>
+                            {parseFloat(node.merchandise.compareAtPrice.amount).toLocaleString(undefined, { style: 'currency', currency: node.merchandise.compareAtPrice.currencyCode })}
+                          </span>
+                        )}
+                        <span className={node.merchandise.compareAtPrice && parseFloat(node.merchandise.compareAtPrice.amount) > parseFloat(price.amount) ? styles.salePrice : styles.itemPrice}>
+                          {parseFloat(price.amount).toLocaleString(undefined, { style: 'currency', currency: price.currencyCode })}
+                        </span>
+                      </div>
                       
                       <div className={styles.itemActions}>
                         <div className={styles.quantitySelector}>
@@ -123,9 +144,15 @@ export function CartDrawer() {
             </form>
 
             <div className={styles.subtotal}>
-              <span>Subtotal:</span>
+              <span>{t('subtotal') || 'Subtotal'}:</span>
               <span>{parseFloat(cart.cost.subtotalAmount.amount).toLocaleString(undefined, { style: 'currency', currency: cart.cost.subtotalAmount.currencyCode })}</span>
             </div>
+            {totalSavings > 0 && (
+              <div className={styles.savings}>
+                <span>{t('youSaved') || 'You saved'}:</span>
+                <span>{totalSavings.toLocaleString(undefined, { style: 'currency', currency: currencyCode })}</span>
+              </div>
+            )}
             <a href={cart.checkoutUrl} className={styles.checkoutLink}>
               <Button variant="primary" fullWidth>{t('checkout')}</Button>
             </a>

@@ -58,7 +58,7 @@ export function Header() {
             aria-label="Switch Language" 
             style={{ fontSize: '14px', width: 'auto', padding: '0 8px', fontWeight: 500 }}
           >
-            {locale === 'ar' ? 'EN ðŸ‡¬ðŸ‡§' : 'AR ðŸ‡ªðŸ‡¬'}
+            {locale === 'ar' ? 'EN 🇬🇧' : 'AR 🇪🇬'}
           </button>
 
           <button className={`${styles.iconButton} ${styles.mobileOnly}`} aria-label="Search">
@@ -84,7 +84,7 @@ export function Header() {
             aria-label="Switch Language" 
             style={{ fontSize: '14px', width: 'auto', padding: '0 8px', fontWeight: 500 }}
           >
-            {locale === 'ar' ? 'EN ðŸ‡¬ðŸ‡§' : 'AR ðŸ‡ªðŸ‡¬'}
+            {locale === 'ar' ? 'EN 🇬🇧' : 'AR 🇪🇬'}
           </button>
 
           <button className={`${styles.iconButton} ${styles.desktopOnly}`} aria-label="Search">

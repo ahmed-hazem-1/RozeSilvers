@@ -23,8 +23,11 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const imageUrl = product.images?.edges[0]?.node?.url;
   const imageAlt = product.images?.edges[0]?.node?.altText || product.title;
   const price = product.priceRange?.minVariantPrice;
+  const compareAtPrice = product.compareAtPriceRange?.minVariantPrice;
   const variantId = product.variants?.edges[0]?.node?.id;
   const isHearted = isInWishlist(product.handle);
+
+  const isOnSale = compareAtPrice && parseFloat(compareAtPrice.amount) > parseFloat(price?.amount || '0');
 
   const handleHeartClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -56,6 +59,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           ) : (
             <div className={styles.image} style={{ width: '100%', height: '100%', backgroundColor: '#eee' }} />
           )}
+
+          {isOnSale && (
+            <div className={styles.saleBadge}>
+              {tc('sale') || 'SALE'}
+            </div>
+          )}
           
           <button 
             className={`${styles.heartBtn} ${isHearted ? styles.hearted : ''}`}
@@ -71,12 +80,22 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <Link href={`/products/${product.handle}`} style={{ textDecoration: 'none' }}>
           <h3 className={styles.title}>{product.title}</h3>
           {price && (
-            <p className={styles.price}>
-              {parseFloat(price.amount).toLocaleString(undefined, {
-                style: 'currency',
-                currency: price.currencyCode
-              })}
-            </p>
+            <div className={styles.priceContainer}>
+              {isOnSale && (
+                <span className={styles.originalPrice}>
+                  {parseFloat(compareAtPrice.amount).toLocaleString(undefined, {
+                    style: 'currency',
+                    currency: compareAtPrice.currencyCode
+                  })}
+                </span>
+              )}
+              <span className={isOnSale ? styles.salePrice : styles.price}>
+                {parseFloat(price.amount).toLocaleString(undefined, {
+                  style: 'currency',
+                  currency: price.currencyCode
+                })}
+              </span>
+            </div>
           )}
           {/* Mock color field for ASOS layout */}
           <p className={styles.subText}>Silver</p>

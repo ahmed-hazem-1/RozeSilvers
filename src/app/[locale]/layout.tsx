@@ -10,6 +10,7 @@ import { WishlistProvider } from '@/context/WishlistContext';
 import { Header } from '@/components/layout/Header/Header';
 import { Footer } from '@/components/layout/Footer/Footer';
 import { CartDrawer } from '@/components/layout/CartDrawer/CartDrawer';
+import { FloatingContact } from '@/components/layout/FloatingContact/FloatingContact';
 import '../globals.css';
 
 const playfair = localFont({
@@ -97,6 +98,7 @@ export default async function RootLayout({
               <main>{children}</main>
               <Footer />
               <CartDrawer />
+              <FloatingContact />
             </WishlistProvider>
           </CartProvider>
         </NextIntlClientProvider>

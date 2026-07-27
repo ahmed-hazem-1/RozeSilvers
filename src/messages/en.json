@@ -21,7 +21,10 @@
     "careInstructions": "Care Instructions",
     "relatedProducts": "You May Also Like",
     "material": "Material",
-    "weight": "Weight"
+    "weight": "Weight",
+    "addToWishlist": "Add to Wishlist",
+    "removeFromWishlist": "Remove from Wishlist",
+    "sale": "SALE"
   },
   "cart": {
     "title": "Shopping Cart",
@@ -30,7 +33,8 @@
     "subtotal": "Subtotal",
     "shippingNote": "Shipping calculated at checkout",
     "checkout": "CHECKOUT",
-    "remove": "Remove"
+    "remove": "Remove",
+    "youSaved": "You saved"
   },
   "search": {
     "placeholder": "Search products...",

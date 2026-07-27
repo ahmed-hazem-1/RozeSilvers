@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 import { Button } from '@/components/ui/Button/Button';
 import { ProductGrid } from '@/components/product/ProductGrid/ProductGrid';
 import { AddToCartButton } from '@/components/product/AddToCartButton/AddToCartButton';
+import { WishlistButton } from '@/components/product/WishlistButton/WishlistButton';
 import styles from './page.module.css';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; handle: string }> }): Promise<Metadata> {
@@ -68,6 +69,8 @@ export default async function ProductPage({
 
   const imageUrl = product?.images?.edges[0]?.node?.url;
   const price = product?.priceRange?.minVariantPrice;
+  const compareAtPrice = product?.compareAtPriceRange?.minVariantPrice;
+  const isOnSale = compareAtPrice && parseFloat(compareAtPrice.amount) > parseFloat(price?.amount || '0');
 
   const jsonLd = product ? {
     '@context': 'https://schema.org',
@@ -100,6 +103,11 @@ export default async function ProductPage({
             ) : (
               <div style={{ width: '100%', height: '100%', backgroundColor: '#eee' }} />
             )}
+            {isOnSale && (
+              <div className={styles.saleBadge}>
+                {t('sale') || 'SALE'}
+              </div>
+            )}
           </div>
           
           <div className={styles.formContainer}>
@@ -107,19 +115,37 @@ export default async function ProductPage({
               variantId={product?.variants?.edges[0]?.node?.id} 
               label={t('addToCart')} 
             />
+            <WishlistButton handle={handle} variant="button" />
           </div>
         </div>
 
         {/* Info */}
         <div className={styles.info}>
-          <h1 className={styles.title}>{product?.title || 'Product Title'}</h1>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: 'var(--space-xs)' }}>
+            <h1 className={styles.title} style={{ marginBottom: 0 }}>{product?.title || 'Product Title'}</h1>
+            <WishlistButton handle={handle} variant="icon" />
+          </div>
 
-          <p className={styles.price}>
-            {price ? parseFloat(price.amount).toLocaleString(undefined, {
-              style: 'currency',
-              currency: price.currencyCode
-            }) : '$0.00'}
-          </p>
+          {price ? (
+            <div className={styles.priceContainer}>
+              {isOnSale && (
+                <span className={styles.originalPrice}>
+                  {parseFloat(compareAtPrice.amount).toLocaleString(undefined, {
+                    style: 'currency',
+                    currency: compareAtPrice.currencyCode
+                  })}
+                </span>
+              )}
+              <span className={isOnSale ? styles.salePrice : styles.price}>
+                {parseFloat(price.amount).toLocaleString(undefined, {
+                  style: 'currency',
+                  currency: price.currencyCode
+                })}
+              </span>
+            </div>
+          ) : (
+            <p className={styles.price}>$0.00</p>
+          )}
 
           <div 
             className={styles.description}

@@ -73,6 +73,7 @@ export async function getCartAction(cartId: string) {
                     id
                     title
                     price { amount currencyCode }
+                    compareAtPrice { amount currencyCode }
                     image { url altText }
                     product { title handle }
                   }
