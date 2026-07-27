@@ -1,0 +1,333 @@
+.controlsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: var(--space-xl);
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: transparent;
+  border: 1px solid var(--color-border-medium);
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filterBtn:hover {
+  border-color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
+}
+
+.sortContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.sortLabel {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .sortLabel {
+    display: block;
+  }
+}
+
+.customSelectWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.customSelectTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 180px;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-medium);
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.customSelectTrigger:hover,
+.customSelectTrigger:focus {
+  border-color: var(--color-text-primary);
+}
+
+.selectIcon {
+  color: var(--color-text-secondary);
+  transition: transform var(--transition-fast);
+}
+
+.selectIconOpen {
+  transform: rotate(180deg);
+}
+
+.customSelectMenu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-medium);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+}
+
+.customSelectOption {
+  background: transparent;
+  border: none;
+  padding: 10px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+html[dir="rtl"] .customSelectOption {
+  text-align: right;
+}
+
+.customSelectOption:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+}
+
+.customSelectOptionActive {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+}
+
+.customSelectOptionActive:hover {
+  background-color: var(--color-text-primary);
+}
+
+/* Drawer Styles */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+.overlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 350px;
+  background-color: var(--color-bg-card);
+  z-index: 101;
+  transform: translateX(-100%);
+  transition: transform var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+html[dir="rtl"] .drawer {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+
+html[dir="rtl"] .drawerOpen {
+  transform: translateX(0);
+}
+
+.drawerHeader {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawerHeader h2 {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  padding: var(--space-xs);
+}
+
+.drawerContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.filterTitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-border-dark);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  color: var(--color-bg-card);
+}
+
+.checkboxChecked {
+  background-color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+}
+
+.checkboxText {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.checkboxLabel:hover .checkboxText {
+  color: var(--color-text-primary);
+}
+
+.priceInputs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.inputGroup {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.currencySymbol {
+  position: absolute;
+  left: 12px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+html[dir="rtl"] .currencySymbol {
+  left: auto;
+  right: 12px;
+}
+
+.priceInput {
+  width: 100%;
+  padding: 8px 12px 8px 24px;
+  border: 1px solid var(--color-border-medium);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  outline: none;
+  border-radius: 2px;
+}
+
+html[dir="rtl"] .priceInput {
+  padding: 8px 24px 8px 12px;
+}
+
+.priceInput:focus {
+  border-color: var(--color-text-primary);
+}
+
+.drawerFooter {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--color-border-light);
+  display: flex;
+  gap: var(--space-md);
+}
+
+.clearBtn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--color-border-medium);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.clearBtn:hover {
+  background: var(--color-bg-secondary);
+  border-color: var(--color-text-primary);
+}

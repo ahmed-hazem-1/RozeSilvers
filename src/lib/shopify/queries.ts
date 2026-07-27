@@ -84,6 +84,17 @@ export const getCollectionQuery = `
           }
         }
         pageInfo { hasNextPage endCursor }
+        filters {
+          id
+          label
+          type
+          values {
+            id
+            label
+            count
+            input
+          }
+        }
       }
     }
   }
@@ -101,6 +112,39 @@ export const searchQuery = `
           }
         }
       }
+    }
+  }
+`;
+
+export const getSearchProductsQuery = `
+  query getSearchProducts($first: Int!, $sortKey: SearchSortKeys, $reverse: Boolean, $productFilters: [ProductFilter!]) {
+    search(query: "*", first: $first, types: [PRODUCT], productFilters: $productFilters, sortKey: $sortKey, reverse: $reverse) {
+      productFilters {
+        id
+        label
+        type
+        values {
+          id
+          label
+          count
+          input
+        }
+      }
+      edges {
+        node {
+          ... on Product {
+            id title handle productType vendor
+            priceRange { minVariantPrice { amount currencyCode } }
+            compareAtPriceRange { minVariantPrice { amount currencyCode } }
+            images(first: 2) { edges { node { url altText } } }
+            availableForSale
+            variants(first: 5) {
+              edges { node { id title availableForSale selectedOptions { name value } } }
+            }
+          }
+        }
+      }
+      pageInfo { hasNextPage endCursor }
     }
   }
 `;

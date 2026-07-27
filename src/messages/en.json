@@ -43,6 +43,7 @@
     "resultsFor": "results for"
   },
   "collection": {
+    "allProducts": "All Products",
     "filter": "Filter",
     "sort": "Sort",
     "sortFeatured": "Featured",
