@@ -24,7 +24,10 @@
     "weight": "Weight",
     "addToWishlist": "Add to Wishlist",
     "removeFromWishlist": "Remove from Wishlist",
-    "sale": "SALE"
+    "sale": "SALE",
+    "notFoundTitle": "Product Not Found",
+    "notFoundText": "The requested product could not be found or is no longer available.",
+    "continueShopping": "Explore Collections"
   },
   "cart": {
     "title": "Shopping Cart",

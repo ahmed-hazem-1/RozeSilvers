@@ -9,6 +9,8 @@ import { ProductGrid } from '@/components/product/ProductGrid/ProductGrid';
 import { AddToCartButton } from '@/components/product/AddToCartButton/AddToCartButton';
 import { WishlistButton } from '@/components/product/WishlistButton/WishlistButton';
 import { ProductGallery } from '@/components/product/ProductGallery/ProductGallery';
+import { Link } from '@/i18n/routing';
+import { FiPackage } from 'react-icons/fi';
 import styles from './page.module.css';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; handle: string }> }): Promise<Metadata> {
@@ -54,7 +56,18 @@ export default async function ProductPage({
   }
 
   if (!product) {
-    // notFound();
+    return (
+      <div className={styles.notFoundContainer}>
+        <FiPackage size={64} className={styles.notFoundIcon} />
+        <h1 className={styles.notFoundTitle}>{t('notFoundTitle')}</h1>
+        <p className={styles.notFoundText}>
+          {t('notFoundText')}
+        </p>
+        <Link href="/collections" className={styles.backBtn}>
+          {t('continueShopping')}
+        </Link>
+      </div>
+    );
   }
 
   let recommended = [];

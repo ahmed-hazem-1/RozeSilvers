@@ -24,7 +24,10 @@
     "weight": "الوزن",
     "addToWishlist": "إضافة للمفضلة",
     "removeFromWishlist": "إزالة من المفضلة",
-    "sale": "عرض"
+    "sale": "عرض",
+    "notFoundTitle": "المنتج غير موجود",
+    "notFoundText": "المنتج المطلوب غير موجود أو لم يعد متوفراً حالياً.",
+    "continueShopping": "تصفحي المجموعات"
   },
   "cart": {
     "title": "سلة التسوق",

@@ -200,3 +200,53 @@
     padding-bottom: 120px;
   }
 }
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4xl) var(--container-padding-desktop);
+  text-align: center;
+  min-height: 50vh;
+}
+
+.notFoundIcon {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  opacity: 0.6;
+}
+
+.notFoundTitle {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+}
+
+.notFoundText {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.backBtn {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.backBtn:hover {
+  opacity: 0.85;
+}
