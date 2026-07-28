@@ -63,7 +63,7 @@ export default async function ProductPage({
         <p className={styles.notFoundText}>
           {t('notFoundText')}
         </p>
-        <Link href="/collections" className={styles.backBtn}>
+        <Link href="/collections/all" className={styles.backBtn}>
           {t('continueShopping')}
         </Link>
       </div>
