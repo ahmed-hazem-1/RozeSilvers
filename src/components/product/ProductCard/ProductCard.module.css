@@ -3,6 +3,13 @@
   flex-direction: column;
   text-decoration: none;
   color: inherit;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
 }
 
 .imageContainer {
@@ -15,17 +22,74 @@
 
 .image {
   object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
-.card:hover .image {
-  transform: scale(1.05);
+.imageActive {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.imagePrev {
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.imageNext {
+  transform: translateX(100%);
+  z-index: 1;
+}
+
+.shine {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: 0.7s;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.card:hover .shine {
+  animation: shineAnimation 0.8s forwards;
+}
+
+@keyframes shineAnimation {
+  100% {
+    left: 150%;
+  }
+}
+
+:global([dir="rtl"]) .shine {
+  left: auto;
+  right: -150%;
+  background: linear-gradient(to left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+}
+
+:global([dir="rtl"]) .card:hover .shine {
+  animation: shineAnimationRtl 0.8s forwards;
+}
+
+@keyframes shineAnimationRtl {
+  100% {
+    right: 150%;
+  }
 }
 
 .details {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: 0 12px 16px 12px;
 }
 
 .title {
@@ -33,6 +97,7 @@
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.5px;
+  transition: color 0.4s ease;
 }
 
 .price {
@@ -41,6 +106,7 @@
   font-weight: bold;
   color: var(--color-text-primary);
   margin-top: 4px;
+  transition: color 0.4s ease;
 }
 
 .priceContainer {
@@ -55,6 +121,14 @@
   font-size: 13px;
   color: var(--color-text-secondary);
   text-decoration: line-through;
+  transition: color 0.4s ease;
+}
+
+.card:hover .title,
+.card:hover .price,
+.card:hover .subText,
+.card:hover .originalPrice {
+  color: var(--color-bg-primary);
 }
 
 .salePrice {
@@ -85,6 +159,7 @@
   font-size: 12px;
   color: var(--color-text-secondary);
   margin-top: 4px;
+  transition: color 0.4s ease;
 }
 
 .heartBtn {
@@ -131,10 +206,22 @@
   font-weight: 500;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.4s ease;
 }
 
 .addToCartBtn:hover {
   background: var(--color-text-primary);
   color: var(--color-bg-primary);
+}
+
+.card:hover .addToCartBtn {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border-color: var(--color-bg-primary);
+}
+
+.card:hover .addToCartBtn:hover {
+  background: transparent;
+  color: var(--color-bg-primary);
+  border-color: var(--color-bg-primary);
 }

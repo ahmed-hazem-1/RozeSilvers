@@ -1,12 +1,13 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { FiHeart } from 'react-icons/fi';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
-import { Button } from '@/components/ui/Button/Button';
 import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
@@ -15,19 +16,34 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, priority = false }: ProductCardProps) {
-  const t = useTranslations('nav'); // or 'product' if you prefer, but 'nav' is loaded usually. Let's use getTranslations in server or just raw text if not available? Wait, next-intl works in client too.
   const tc = useTranslations('product');
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addCartItem } = useCart();
+  const locale = useLocale();
+  const isRtl = locale === 'ar';
 
-  const imageUrl = product.images?.edges[0]?.node?.url;
-  const imageAlt = product.images?.edges[0]?.node?.altText || product.title;
+  const [isHovered, setIsHovered] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = product.images?.edges.map((e: any) => e.node) || [];
   const price = product.priceRange?.minVariantPrice;
   const compareAtPrice = product.compareAtPriceRange?.minVariantPrice;
   const variantId = product.variants?.edges[0]?.node?.id;
   const isHearted = isInWishlist(product.handle);
 
   const isOnSale = compareAtPrice && parseFloat(compareAtPrice.amount) > parseFloat(price?.amount || '0');
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isHovered && images.length > 1) {
+      interval = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      }, 2200);
+    } else {
+      setCurrentImageIndex(0);
+    }
+    return () => clearInterval(interval);
+  }, [isHovered, images.length]);
 
   const handleHeartClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -44,21 +60,39 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   };
 
   return (
-    <div className={styles.card}>
+    <div 
+      className={styles.card}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Link href={`/products/${product.handle}`} className={styles.imageLink}>
         <div className={styles.imageContainer}>
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={imageAlt}
-              fill
-              sizes="(max-width: 768px) 50vw, 25vw"
-              className={styles.image}
-              priority={priority}
-            />
+          {images.length > 0 ? (
+            images.map((img: any, index: number) => {
+              let positionClass = styles.imageActive;
+              if (index < currentImageIndex) {
+                positionClass = isRtl ? styles.imageNext : styles.imagePrev;
+              } else if (index > currentImageIndex) {
+                positionClass = isRtl ? styles.imagePrev : styles.imageNext;
+              }
+
+              return (
+                <Image
+                  key={img.url + index}
+                  src={img.url}
+                  alt={img.altText || product.title}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className={`${styles.image} ${positionClass}`}
+                  priority={priority && index === 0}
+                />
+              );
+            })
           ) : (
-            <div className={styles.image} style={{ width: '100%', height: '100%', backgroundColor: '#eee' }} />
+            <div className={styles.image} style={{ backgroundColor: '#eee' }} />
           )}
+
+          <div className={styles.shine} />
 
           {isOnSale && (
             <div className={styles.saleBadge}>
@@ -97,7 +131,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               </span>
             </div>
           )}
-          {/* Mock color field for ASOS layout */}
           <p className={styles.subText}>Silver</p>
         </Link>
         

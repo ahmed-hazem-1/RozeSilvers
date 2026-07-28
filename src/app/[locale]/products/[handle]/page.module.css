@@ -21,47 +21,11 @@
   }
 }
 
-.gallery {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-
 .imageColumn {
   display: flex;
   flex-direction: column;
   width: 100%;
   order: -1;
-}
-
-.mainImage {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/5;
-  background-color: var(--color-border-light);
-  overflow: hidden;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.thumbnails {
-  display: flex;
-  gap: var(--space-sm);
-  overflow-x: auto;
-  padding-bottom: var(--space-sm);
-}
-
-.thumbnail {
-  position: relative;
-  width: 80px;
-  height: 100px;
-  background-color: var(--color-border-light);
-  cursor: pointer;
-  border: 1px solid transparent;
-}
-
-.thumbnailActive {
-  border-color: var(--color-text-primary);
 }
 
 .info {

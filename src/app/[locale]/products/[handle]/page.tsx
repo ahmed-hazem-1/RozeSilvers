@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button/Button';
 import { ProductGrid } from '@/components/product/ProductGrid/ProductGrid';
 import { AddToCartButton } from '@/components/product/AddToCartButton/AddToCartButton';
 import { WishlistButton } from '@/components/product/WishlistButton/WishlistButton';
+import { ProductGallery } from '@/components/product/ProductGallery/ProductGallery';
 import styles from './page.module.css';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; handle: string }> }): Promise<Metadata> {
@@ -97,18 +98,13 @@ export default async function ProductPage({
         
         {/* Image Column */}
         <div className={styles.imageColumn}>
-          <div className={styles.mainImage}>
-            {imageUrl ? (
-              <Image src={imageUrl} alt={product?.title || 'Product'} fill style={{ objectFit: 'cover' }} priority sizes="(max-width: 768px) 100vw, 50vw" />
-            ) : (
-              <div style={{ width: '100%', height: '100%', backgroundColor: '#eee' }} />
-            )}
-            {isOnSale && (
-              <div className={styles.saleBadge}>
-                {t('sale') || 'SALE'}
-              </div>
-            )}
-          </div>
+          <ProductGallery 
+            images={product?.images?.edges.map((e: any) => e.node) || []} 
+            title={product?.title || 'Product'} 
+            isOnSale={isOnSale} 
+            saleLabel={t('sale') || 'SALE'}
+          />
+
           
           <div className={styles.formContainer}>
             <AddToCartButton 
