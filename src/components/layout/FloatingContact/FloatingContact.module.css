@@ -84,11 +84,17 @@
   .container {
     bottom: 16px;
     right: 16px;
+    transition: bottom 0.3s ease;
   }
   
   [dir="rtl"] .container {
     right: auto;
     left: 16px;
+  }
+
+  /* Elevate above mobile product sticky bar */
+  body:has([class*="formContainer"]) .container {
+    bottom: calc(148px + env(safe-area-inset-bottom, 0px));
   }
   
   .mainButton {

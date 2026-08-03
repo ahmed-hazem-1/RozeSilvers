@@ -106,9 +106,26 @@ export const searchQuery = `
       edges {
         node {
           ... on Product {
-            id title handle productType
-            priceRange { minVariantPrice { amount currencyCode } }
-            images(first: 1) { edges { node { url altText } } }
+            id
+            title
+            handle
+            productType
+            vendor
+            availableForSale
+            priceRange {
+              minVariantPrice { amount currencyCode }
+            }
+            compareAtPriceRange {
+              minVariantPrice { amount currencyCode }
+            }
+            images(first: 2) {
+              edges {
+                node {
+                  url
+                  altText
+                }
+              }
+            }
           }
         }
       }

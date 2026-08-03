@@ -171,3 +171,71 @@ export async function getProductsByHandlesAction(handles: string[]) {
     return [];
   }
 }
+
+export async function searchProductsAction(query: string, limit: number = 8) {
+  if (!query || query.trim().length === 0) {
+    return [];
+  }
+
+  const trimmed = query.trim();
+
+  try {
+    const { searchQuery, getAllProductsQuery } = await import('./queries');
+    
+    // 1. Try Shopify Storefront search query first
+    const searchRes = await shopifyFetch<any>({
+      query: searchQuery,
+      variables: {
+        query: trimmed,
+        first: limit
+      },
+      cache: 'no-store'
+    });
+
+    const edges = searchRes.body?.data?.search?.edges || [];
+    let rawNodes = edges
+      .map((edge: any) => edge.node)
+      .filter((node: any) => node && node.id && node.handle);
+
+    // 2. If standard search returned empty (common with partial matching or specific words), try wildcard title/tag search
+    if (rawNodes.length === 0) {
+      const fallbackRes = await shopifyFetch<any>({
+        query: getAllProductsQuery,
+        variables: {
+          first: limit,
+          query: `title:*${trimmed}* OR tag:${trimmed} OR product_type:${trimmed}`
+        },
+        cache: 'no-store'
+      });
+      const fallbackEdges = fallbackRes.body?.data?.products?.edges || [];
+      rawNodes = fallbackEdges.map((e: any) => e.node).filter(Boolean);
+    }
+
+    // 3. Normalize product objects for the frontend UI
+    return rawNodes.map((node: any) => {
+      const minPrice = node.priceRange?.minVariantPrice || { amount: '0', currencyCode: 'EGP' };
+      const comparePrice = node.compareAtPriceRange?.minVariantPrice || null;
+      const isOnSale = Boolean(
+        comparePrice && parseFloat(comparePrice.amount) > parseFloat(minPrice.amount)
+      );
+      const firstImage = node.images?.edges?.[0]?.node || null;
+
+      return {
+        id: node.id,
+        title: node.title,
+        handle: node.handle,
+        productType: node.productType || '',
+        vendor: node.vendor || '',
+        availableForSale: node.availableForSale !== false,
+        price: minPrice,
+        compareAtPrice: comparePrice,
+        isOnSale,
+        image: firstImage ? { url: firstImage.url, altText: firstImage.altText || node.title } : null
+      };
+    });
+  } catch (e) {
+    console.error('Error in searchProductsAction:', e);
+    return [];
+  }
+}
+

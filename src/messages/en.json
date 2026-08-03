@@ -42,8 +42,18 @@
   "search": {
     "placeholder": "Search products...",
     "noResults": "No products found for",
+    "noResultsTip": "Try searching for a different keyword or category",
     "viewAll": "View all results",
-    "resultsFor": "results for"
+    "resultsFor": "results for",
+    "clear": "Clear",
+    "close": "Close",
+    "loading": "Searching...",
+    "products": "Products",
+    "popularSearches": "Popular Searches",
+    "rings": "Rings",
+    "necklaces": "Necklaces",
+    "bracelets": "Bracelets",
+    "earrings": "Earrings"
   },
   "collection": {
     "allProducts": "All Products",
@@ -136,5 +146,95 @@
     "useText": "We use the information we collect to process your orders, communicate with you about your purchases, and send you promotional materials if you have opted in to receive them.",
     "security": "Data Security",
     "securityText": "We implement industry-standard security measures to protect your personal information. Your payment details are processed securely through Shopify and are never stored on our servers."
+  },
+  "aiChooser": {
+    "launcher": {
+      "buttonText": "AI Stylist ✦",
+      "tooltip": "Tired of endless scrolling? Find your perfect silver piece in 60 seconds"
+    },
+    "prompt": {
+      "title": "Tired of scrolling and still haven't found the right piece?",
+      "subtitle": "Skip the guesswork! Let your personal AI Stylist curate handcrafted 925 sterling silver tailored to your taste and budget for the smartest purchase decision.",
+      "ctaStart": "Find My Perfect Match Now",
+      "ctaDismiss": "I'll Browse Myself"
+    },
+    "drawer": {
+      "headerTitle": "Your Personal AI Jewelry Stylist ✦",
+      "stepCounter": "Step {current} of {total}",
+      "close": "Close",
+      "back": "Back",
+      "next": "Next",
+      "submit": "Reveal My Curated Selection ✦",
+      "loadingTitle": "Analyzing your taste to curate the ultimate match...",
+      "loadingSubtitle": "Matching your preferences with our authentic 925 sterling silver collection for lasting elegance and unbeatable value."
+    },
+    "step1": {
+      "title": "Who are you shopping for & what's the occasion?",
+      "subtitle": "Your answer guides us to recommend a piece that leaves an unforgettable impression:",
+      "recipientLabel": "Recipient",
+      "occasionLabel": "Occasion",
+      "options": {
+        "self": "For Myself (Treat Yourself)",
+        "partner": "Partner / Wife (A Meaningful Gift)",
+        "mother": "My Beloved Mother",
+        "friend": "A Special Friend",
+        "everyday": "Effortless Everyday Luxury",
+        "anniversary": "Anniversary / Engagement",
+        "birthday": "Unforgettable Birthday Surprise",
+        "specialGift": "Just Because / Meaningful Surprise"
+      }
+    },
+    "step2": {
+      "title": "Which jewelry categories do you prefer?",
+      "subtitle": "Select one or more to help us coordinate a stunning, cohesive look:",
+      "options": {
+        "rings": "Elegant Rings",
+        "necklaces": "Statement Necklaces & Pendants",
+        "bracelets": "Refined Bracelets & Bangles",
+        "earrings": "Delicate Earrings",
+        "anklets": "Chic Anklets"
+      }
+    },
+    "step3": {
+      "title": "What aesthetic best reflects your personal vibe?",
+      "subtitle": "To ensure you fall in love with your piece, choose your signature style:",
+      "options": {
+        "minimal": "Minimal & Dainty (Subtle Sophistication)",
+        "classic": "Classic & Timeless (Heirloom Elegance)",
+        "statement": "Modern Statement (Bold & Confident)",
+        "zircon": "Sparkling Zircon Pavé (Diamond-Like Radiance)"
+      }
+    },
+    "step4": {
+      "title": "What is your target budget range today?",
+      "subtitle": "We recommend the highest value and luxury for every budget, guaranteed 925 silver:",
+      "options": {
+        "under600": "Under 600 EGP (Smart & Accessible Elegance)",
+        "600to1500": "600 – 1,500 EGP (Most Popular & Bestselling)",
+        "above1500": "1,500+ EGP (Exclusive Luxury Selection)",
+        "any": "Explore All Budgets (Show Me The Best)"
+      }
+    },
+    "results": {
+      "title": "Your Ultimate Curated Match ✦",
+      "subtitle": "Based on your precise preferences, this handcrafted 925 sterling silver piece is the smartest investment for your style today:",
+      "matchScore": "{score}% Smart Match",
+      "whyWeChoseThis": "Why this is your best purchase today",
+      "viewProduct": "View Full Details & Specs",
+      "addToCart": "CLAIM YOUR PIECE (ADD TO CART)",
+      "addedToCart": "ADDED TO CART ✓",
+      "pairingTitle": "Stylist Tip: Add the matching piece for a complete gift set",
+      "addBundle": "Get the Complete Set with 1-Click",
+      "addingBundle": "Adding Complete Set...",
+      "bundleAdded": "Complete Set Added ✓",
+      "giftNote": "Suggested Note for the Gift Card (Ready to Copy)",
+      "retake": "Try Different Preferences"
+    },
+    "errors": {
+      "general": "Unable to curate selections at this time. Please try again.",
+      "retry": "Try Again",
+      "selectRequired": "Please make a selection so we can curate the best piece for you"
+    }
   }
 }
+

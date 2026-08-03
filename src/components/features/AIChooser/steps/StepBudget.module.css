@@ -1,0 +1,56 @@
+.stepContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-medium);
+  border-radius: 0px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-align: start;
+}
+
+.card:hover {
+  border-color: var(--color-text-primary);
+  background-color: #f2f2f2;
+}
+
+.cardSelected {
+  background-color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  color: #FFFFFF;
+}
+
+.cardSelected:hover {
+  background-color: #222222;
+  border-color: #222222;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.cardSelected .label {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.indicator {
+  font-size: 11px;
+  color: #FFFFFF;
+  margin-inline-start: 8px;
+}

@@ -1,5 +1,5 @@
 import { Link } from '@/i18n/routing';
-import { FiX } from 'react-icons/fi';
+import { FiX, FiSearch } from 'react-icons/fi';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -8,10 +8,12 @@ import styles from './MobileMenu.module.css';
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenSearch?: () => void;
 }
 
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, onOpenSearch }: MobileMenuProps) {
   const t = useTranslations('nav');
+  const ts = useTranslations('search');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -33,6 +35,20 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       <div className={styles.overlay} onClick={onClose} />
       <div className={styles.menu}>
         <div className={styles.header}>
+          {onOpenSearch && (
+            <button
+              type="button"
+              className={styles.searchTrigger}
+              onClick={() => {
+                onClose();
+                onOpenSearch();
+              }}
+              aria-label="Search"
+            >
+              <FiSearch size={16} />
+              <span>{ts('placeholder') || 'Search products...'}</span>
+            </button>
+          )}
           <button className={styles.closeBtn} onClick={onClose} aria-label="Close menu">
             <FiX size={24} />
           </button>

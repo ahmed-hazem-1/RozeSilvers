@@ -1,0 +1,80 @@
+.stepContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionLabel {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-medium);
+  border-radius: 0px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-align: start;
+  min-height: 52px;
+}
+
+.chip:hover {
+  border-color: var(--color-text-primary);
+  background-color: #f2f2f2;
+}
+
+.chipSelected {
+  background-color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+  color: #FFFFFF;
+}
+
+.chipSelected:hover {
+  background-color: #222222;
+  border-color: #222222;
+}
+
+.chipText {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.chipSelected .chipText {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.indicator {
+  font-size: 11px;
+  color: #FFFFFF;
+  margin-inline-start: 8px;
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

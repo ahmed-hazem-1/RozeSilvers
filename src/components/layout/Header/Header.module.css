@@ -23,6 +23,25 @@
   }
 }
 
+.searchBarActiveWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: searchHeaderFade 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes searchHeaderFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .nav {
   display: flex;
   gap: var(--space-lg);

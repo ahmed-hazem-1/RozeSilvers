@@ -1,0 +1,275 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.badge {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.card {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-medium);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.matchScore {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background-color: var(--color-text-primary);
+  color: #FFFFFF;
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.productRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.imageContainer {
+  width: 90px;
+  height: 110px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-light);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.productDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.productTitle {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.originalPrice {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.rationaleBox {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-light);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rationaleTitle {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.rationaleText {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: #444444;
+  line-height: 1.5;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.viewLink {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.viewLink:hover {
+  color: var(--color-text-primary);
+}
+
+/* Bundle Pairing Card */
+.bundleCard {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border-medium);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bundleBadge {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.pairingRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.pairingImageContainer {
+  width: 56px;
+  height: 68px;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-light);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pairingInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pairingTitle {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.pairingPrice {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+/* Gift note card */
+.giftNoteCard {
+  background-color: #FAF8F5;
+  border: 1px dashed var(--color-border-medium);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.giftNoteHeader {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.giftNoteQuote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333333;
+}
+
+.retakeBtn {
+  background: none;
+  border: 1px solid var(--color-border-medium);
+  padding: 12px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retakeBtn:hover {
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}

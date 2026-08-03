@@ -11,6 +11,12 @@ import { Header } from '@/components/layout/Header/Header';
 import { Footer } from '@/components/layout/Footer/Footer';
 import { CartDrawer } from '@/components/layout/CartDrawer/CartDrawer';
 import { FloatingContact } from '@/components/layout/FloatingContact/FloatingContact';
+import {
+  AIChooserProvider,
+  AIChooserDrawer,
+  AIChooserLauncher,
+  WelcomePromptModal,
+} from '@/components/features/AIChooser';
 import '../globals.css';
 
 const playfair = localFont({
@@ -94,11 +100,16 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <CartProvider>
             <WishlistProvider>
-              <Header />
-              <main>{children}</main>
-              <Footer />
-              <CartDrawer />
-              <FloatingContact />
+              <AIChooserProvider>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+                <CartDrawer />
+                <FloatingContact />
+                <AIChooserDrawer />
+                <AIChooserLauncher />
+                <WelcomePromptModal />
+              </AIChooserProvider>
             </WishlistProvider>
           </CartProvider>
         </NextIntlClientProvider>

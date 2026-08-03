@@ -1,0 +1,147 @@
+.launcherBtn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 100;
+  height: 60px;
+  min-height: 60px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #0E0E0E;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: borderGlowPulse 2.4s infinite ease-out;
+  transition: transform 0.25s ease, background-color 0.25s ease, bottom 0.3s ease;
+}
+
+html[dir="rtl"] .launcherBtn {
+  left: auto;
+  right: 24px;
+}
+
+.launcherBtn:hover {
+  background-color: #1F1F1F;
+  transform: translateY(-2px);
+}
+
+/* Organic Pulse radiating directly from the button border and vanishing smoothly */
+@keyframes borderGlowPulse {
+  0% {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55), 0 4px 16px rgba(0, 0, 0, 0.35);
+  }
+  45% {
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0), 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0), 0 4px 16px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* Sleek Silver Shimmer / Gleam sweeping across the button surface */
+.launcherBtn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmerSweep 2.4s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0%, 25% {
+    left: -130%;
+  }
+  65%, 100% {
+    left: 200%;
+  }
+}
+
+/* Twinkling Star / Sparkle */
+.sparkle {
+  color: #FFFFFF;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  animation: sparkleTwinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes sparkleTwinkle {
+  0%, 25% {
+    transform: scale(1);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+  }
+  45% {
+    transform: scale(1.3);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #FFFFFF);
+  }
+  65%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+  }
+}
+
+.btnText {
+  color: #FFFFFF;
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* Mobile Responsiveness & Sticky Product Bar Clearance */
+@media (max-width: 768px) {
+  .launcherBtn {
+    bottom: 16px;
+    left: 16px;
+    height: 50px;
+    min-height: 50px;
+    padding: 0 18px;
+    border-radius: 25px;
+    font-size: 12px;
+  }
+
+  html[dir="rtl"] .launcherBtn {
+    left: auto;
+    right: 16px;
+  }
+
+  /* Elevate cleanly when sticky product actions bar is present */
+  body:has([class*="formContainer"]) .launcherBtn {
+    bottom: calc(148px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+
+
